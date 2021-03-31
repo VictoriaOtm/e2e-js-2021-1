@@ -1,4 +1,5 @@
 import DefaultPage from './default';
+import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {
@@ -11,6 +12,7 @@ class AccountPage extends DefaultPage {
 			password: 'input[name="password"]',
 			nextButton: '[data-test-id="next-button"]',
 			submitButton: '[data-test-id="submit-button"]',
+			userEmailHeader: '#PH_user-email',
 		}
 	}
 
@@ -36,6 +38,15 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.submitButton)
 	}
 
+	checkAuthorizedEmail(email) {
+		this.page.waitForVisible(this.locators.userEmailHeader);
+		const headerEmail = this.page.getText(this.locators.userEmailHeader);
+		assert.strictEqual(
+			headerEmail,
+			email,
+			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
+		)
+	}
 }
 
 export default new AccountPage();

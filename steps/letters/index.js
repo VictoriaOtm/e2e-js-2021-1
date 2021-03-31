@@ -12,7 +12,7 @@ class LettersSteps extends DefaultSteps {
 
 	openLetter () {
 		this.page.clickLetter();
-		this.page.checkLetterContent();
+		this.page.checkLetterOpened();
 	}
 }
 
