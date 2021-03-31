@@ -17,7 +17,7 @@ class AccountSteps extends DefaultSteps {
 		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.waitForUrl('https://e.mail.ru/inbox/?afterReload=1');
+		this.page.checkAuthorizedEmail(process.env.LOGIN);
 	}
 
 	waitForAccount() {

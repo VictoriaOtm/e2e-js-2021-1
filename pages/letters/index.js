@@ -8,8 +8,8 @@ class LettersPage extends DefaultPage {
 	get locators () {
 		return {
 			container: this.container,
-			letter: '.llc',
-			letterContent: '.layout__letter-content',
+			letter: '.llc__container',
+			letterBody: '.letter__body',
 		}
 	}
 
@@ -18,8 +18,8 @@ class LettersPage extends DefaultPage {
 		this.page.click(this.locators.letter);
 	}
 
-	checkLetterContent () {
-		this.page.waitForVisible(this.locators.letterContent);
+	checkLetterOpened () {
+		this.page.waitForVisible(this.locators.letterBody);
 	}
 }
 
