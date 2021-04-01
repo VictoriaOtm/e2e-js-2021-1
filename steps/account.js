@@ -4,24 +4,15 @@ import page from '../pages/account';
 class AccountSteps extends DefaultSteps {
 	constructor() {
 		super(page);
-	}
-
-	auth() {
-		this.open('https://account.mail.ru');
-		this.waitForAccount();
-		this.login();
+		this.userEmail = process.env.EMAIL;
+		this.userPassword = process.env.PASSWORD;
 	}
 
 	login() {
-		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
-		this.page.fillPasswordForm(process.env.PASSWORD);
+		this.page.fillEmailForm(this.userEmail);
+		this.page.fillPasswdForm(this.userPassword);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
-	}
-
-	waitForAccount() {
-		this.page.waitForContainer();
+		this.page.checkAuthorizedUser(this.userEmail);
 	}
 }
 

@@ -1,52 +1,59 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
+import {strict as assert} from 'assert';
 
 class AccountPage extends DefaultPage {
-	constructor() {
-		super('account', '[data-test-id=login-app-read]')
-	}
+    constructor() {
+        super('account', '[data-test-id=login-app-read]')
+    }
 
-	get locators() {
-		return {
-			login: 'input[name="username"]',
-			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
-		}
-	}
+    get locators() {
+        return {
+            userEmail: 'div[id="email"]',
+            createVacancyLink: 'a.menu-list-block__item_button',
+            profileLink: 'a.menu-list-block__item_icon-profile',
+            email: 'input[name="email"]',
+            passwd: 'input[name="password"]',
+            submitBtn: 'button[id="entBtnAuth"]'
+        }
+    }
 
-	fillLoginForm (username) {
-		this.page.waitForVisible(this.locators.login);
-		this.page.click(this.locators.login);
-		this.page.setValue(this.locators.login, username);
-	}
+    fillEmailForm(email) {
+        const emailSelector = this.locators.email;
 
-	fillPasswordForm (password) {
-		this.page.waitForVisible(this.locators.password);
-		this.page.click(this.locators.password);
-		this.page.setValue(this.locators.password, password);
-	}
+        this.page.waitForVisible(emailSelector);
+        this.page.click(emailSelector);
+        this.page.setValue(emailSelector, email);
+    }
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
+    fillPasswdForm(password) {
+        const passwdSelector = this.locators.passwd;
 
-	submit() {
-		this.page.waitForVisible(this.locators.submitButton);
-		this.page.click(this.locators.submitButton)
-	}
+        this.page.waitForVisible(passwdSelector);
+        this.page.click(passwdSelector);
+        this.page.setValue(passwdSelector, password);
+    }
 
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
-	}
+    submit() {
+        const submitBtnSelector = this.locators.submitBtn;
+
+        this.page.waitForVisible(submitBtnSelector);
+        this.page.click(submitBtnSelector);
+    }
+
+    checkAuthorizedUser(email) {
+        const profileLinkSelector = this.locators.profileLink;
+        const userEmailSelector = this.locators.userEmail
+
+        this.page.waitForVisible(profileLinkSelector); // Дожидаемся появления иконки перехода в личный кабинет
+        this.page.click(profileLinkSelector);
+        this.page.waitForVisible(userEmailSelector); // Дожидаемся появления информации об email пользователя
+        const userEmail = this.page.getText(userEmailSelector);
+        assert.strictEqual(
+            userEmail,
+            email,
+            `Email авторизованного пользователя ${userEmail} не соответствует ожидаемому ${email}`,
+        )
+    }
 }
 
 export default new AccountPage();
