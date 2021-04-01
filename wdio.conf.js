@@ -13,7 +13,7 @@ exports.config = {
 	specs: [
 		'./cases/**/*.js'
 	],
- 
+
 	// ============
 	// Capabilities
 	// ============
@@ -40,7 +40,12 @@ exports.config = {
 		// 5 instances get started at a time.
 		// maxInstances: 5,
 		//
-		browserName: 'chrome'
+		browserName: 'chrome',
+		'goog:chromeOptions': {
+			// to run chrome headless the following flags are required
+			// (see https://developers.google.com/web/updates/2017/04/headless-chrome)
+			args: ['--remote-debugging-port=9222'],
+		}
 	}],
 
 	// ===================
@@ -177,7 +182,7 @@ exports.config = {
 	 */
 	// beforeCommand: function (commandName, args) {
 	// },
-	
+
 	/**
 	 * Hook that gets executed before the suite starts
 	 * @param {Object} suite suite details
@@ -214,7 +219,7 @@ exports.config = {
 	 */
 	// afterSuite: function (suite) {
 	// },
-	
+
 	/**
 	 * Runs after a WebdriverIO command gets executed
 	 * @param {String} commandName hook command name
