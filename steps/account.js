@@ -7,16 +7,17 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open('https://musicexpress.sarafa2n.ru/login');
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
-		this.page.submit();
+		this.page.submitForm();
+		//КОСТЫЛЬ
+		this.open("https://musicexpress.sarafa2n.ru/settings/")
 		this.page.checkAuthorizedEmail(process.env.LOGIN);
 	}
 

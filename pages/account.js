@@ -8,11 +8,11 @@ class AccountPage extends DefaultPage {
 
 	get locators() {
 		return {
-			login: 'input[name="username"]',
+			login: 'input[name="login"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
+			submitButton: 'input[class="form-login__submit button-primary"]',
+			settingsLink: 'a[href="/settings/"]',
+			emailField: 'input[name="email"]'
 		}
 	}
 
@@ -28,23 +28,18 @@ class AccountPage extends DefaultPage {
 		this.page.setValue(this.locators.password, password);
 	}
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
-
-	submit() {
+	submitForm() {
 		this.page.waitForVisible(this.locators.submitButton);
 		this.page.click(this.locators.submitButton)
 	}
 
 	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
+		this.page.waitForValue(this.locators.emailField);
+		let settingsEmail = this.page.getValue(this.locators.emailField);
+			assert.strictEqual(
+			settingsEmail,
 			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
+			`Email авторизованного юзера ${settingsEmail} не соответствует ожидаемому ${email}`,
 		)
 	}
 }
