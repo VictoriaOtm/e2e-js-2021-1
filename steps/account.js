@@ -6,23 +6,15 @@ class AccountSteps extends DefaultSteps {
 		super(page);
 	}
 
-	auth() {
-		this.open('https://musicexpress.sarafa2n.ru/login');
-		this.waitForAccount();
-		this.login();
-	}
-
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submitForm();
-		//КОСТЫЛЬ
-		this.open("https://musicexpress.sarafa2n.ru/settings/")
+		//костыль известен (из-за бага при логине), обсуждено с преподавателем
+		browser.pause(5000);
+		this.open("https://musicexpress.sarafa2n.ru/settings/");
+		browser.pause(5000);
 		this.page.checkAuthorizedEmail(process.env.LOGIN);
-	}
-
-	waitForAccount() {
-		this.page.waitForContainer();
 	}
 }
 
