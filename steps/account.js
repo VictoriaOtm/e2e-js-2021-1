@@ -7,7 +7,7 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open('https://mailer.ru.com/signin');
 		this.waitForAccount();
 		this.login();
 	}

@@ -6,6 +6,12 @@ class LettersSteps extends DefaultSteps {
 		super(page);
 	}
 
+	get locators() {
+		return {
+			createFolder: 'div#add-folder-recived'
+		}
+	}
+
 	waitForList() {
 		this.page.waitForContainer();
 	}

@@ -2,14 +2,14 @@ import DefaultPage from '../default';
 
 class LettersPage extends DefaultPage {
 	constructor() {
-		super('letters', '.dataset-letters')
+		super('letters', '.mainPage')
 	}
 
 	get locators () {
 		return {
 			container: this.container,
-			letter: '.llc__container',
-			letterBody: '.letter__body',
+			letter: 'article.brick',
+			letterBody: 'div.letter-container',
 		}
 	}
 

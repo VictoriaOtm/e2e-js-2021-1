@@ -8,11 +8,11 @@ class AccountPage extends DefaultPage {
 
 	get locators() {
 		return {
-			login: 'input[name="username"]',
+			login: 'input[name="email"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
+			nextButton: 'button[name="submit"]',
+			submitButton: 'button[name="submit"]',
+			userEmailHeader: 'a#recivedUn',
 		}
 	}
 
@@ -40,11 +40,11 @@ class AccountPage extends DefaultPage {
 
 	checkAuthorizedEmail(email) {
 		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
+		const checkAuth = this.page.getText(this.locators.userEmailHeader);
 		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
+			checkAuth,
+			'Входящие',
+			`Авторизация с email: ${email}@mailer.ru.com не произошла`,
 		)
 	}
 }
