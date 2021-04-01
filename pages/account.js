@@ -3,15 +3,15 @@ import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {
-		super('account', '[data-test-id=login-app-read]')
+		super('account', '[class=modal]')
 	}
 
 	get locators() {
 		return {
-			login: 'input[name="username"]',
+			login: 'input[name="email"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
+			submitButton: 'input[type="submit"]',
+			signInButton: '[class=signin-link]',
 			userEmailHeader: '#PH_user-email',
 		}
 	}
@@ -28,9 +28,8 @@ class AccountPage extends DefaultPage {
 		this.page.setValue(this.locators.password, password);
 	}
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
+	goToLogin() {
+		this.page.click(this.locators.signInButton);
 	}
 
 	submit() {
