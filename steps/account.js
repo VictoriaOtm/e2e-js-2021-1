@@ -6,23 +6,12 @@ class AccountSteps extends DefaultSteps {
 		super(page);
 	}
 
-	auth() {
-		this.open('https://account.mail.ru');
-		this.waitForAccount();
-		this.login();
-	}
-
 	login() {
-		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
-		this.page.fillPasswordForm(process.env.PASSWORD);
+		this.page.openLoginForm();
+		this.page.fillLoginForm(process.env.LOGIN, process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
 	}
 
-	waitForAccount() {
-		this.page.waitForContainer();
-	}
 }
 
 export default new AccountSteps();

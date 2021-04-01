@@ -8,45 +8,35 @@ class AccountPage extends DefaultPage {
 
 	get locators() {
 		return {
-			login: 'input[name="username"]',
+			menuButton: 'div.header-mobile__logo-wrapper',
+			login: 'input[name="login"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
+			submitButton: 'button.stdBtn.activable',
+			authModal : '#authModal',
+			profileName: 'h2.profile__name',
 		}
 	}
 
-	fillLoginForm (username) {
+	openLoginForm() {
+		this.page.waitForVisible(this.locators.menuButton);
+		this.page.click(this.locators.menuButton);
+	}
+
+	fillLoginForm (username, password) {
 		this.page.waitForVisible(this.locators.login);
 		this.page.click(this.locators.login);
 		this.page.setValue(this.locators.login, username);
-	}
-
-	fillPasswordForm (password) {
 		this.page.waitForVisible(this.locators.password);
 		this.page.click(this.locators.password);
 		this.page.setValue(this.locators.password, password);
 	}
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
-
 	submit() {
 		this.page.waitForVisible(this.locators.submitButton);
-		this.page.click(this.locators.submitButton)
+		this.page.click(this.locators.submitButton);
+		this.page.waitForVisible(this.locators.authModal, null, true);
 	}
 
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
-	}
 }
 
 export default new AccountPage();
