@@ -14,7 +14,6 @@ class AccountSteps extends DefaultSteps {
 
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
-		//this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
 		this.page.goToProfile();
@@ -26,7 +25,7 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	changePassword() {
-		const newPass = "qwerqwer";
+		const newPass = "testtest";
 		this.open('https://kino-park.online/profileChange');
 		this.page.fillPasswordForm(newPass);
 		this.page.fillOldPasswordForm(process.env.PASSWORD);
@@ -35,7 +34,6 @@ class AccountSteps extends DefaultSteps {
 		process.env.PASSWORD = newPass;
 		this.page.logout();
 		this.auth();
-		//this.page.next();
 		this.open('https://kino-park.online/profileChange');
 		this.page.fillPasswordForm(oldPass);
 		this.page.fillOldPasswordForm(process.env.PASSWORD);
