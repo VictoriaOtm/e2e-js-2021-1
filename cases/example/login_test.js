@@ -1,6 +1,5 @@
 import account from '../../steps/account';
 import header from '../../steps/header';
-import letters from '../../steps/letters/index';
 import {strict as assert} from "assert";
 
 // пример теста
