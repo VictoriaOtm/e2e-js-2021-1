@@ -10,6 +10,10 @@ class PeopleSteps extends DefaultSteps {
 		this.page.clickFavorites();
 		this.page.checkFavoritesOpened();
 	}
+
+    clickToUser() {
+        this.page.clickToUser();
+    }
 }
 
 export default new PeopleSteps();

@@ -11,8 +11,19 @@ class PeoplePage extends DefaultPage {
 			container: this.container,
 			letter: 'button.settings__button',
 			letterBody: '.card-wrapper__cards h1',
+            user: '.user-card:first-child',
+            profile: 'main.profile',
 		}
 	}
+
+    clickToUser() {
+        this.page.waitForVisible(this.locators.user);
+        this.page.click(this.locators.user);
+    }
+
+    checkUserOpened() {
+        assert(this.page.waitForVisible(this.locators.profile));
+    }
 
 	clickFavorites () {
 		this.page.waitForVisible(this.locators.letter);

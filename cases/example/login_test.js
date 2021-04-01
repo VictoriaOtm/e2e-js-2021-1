@@ -16,4 +16,9 @@ describe('test id', () => {
 		people.openFavorites();
 	});
 
+	it('Переход на юзера', () => {
+		account.open('https://onmeet.ru/people');
+		people.clickToUser();
+	});
+
 });
