@@ -8,7 +8,8 @@ class HeaderPage extends DefaultPage {
     get locators() {
         return {
             avatar: '[class=header__control-avatar]',
-            controlEmail: '[class=drop-down-menu__info]'
+            controlEmail: '[class=drop-down-menu__info]',
+            settingsBtn: '[id=drop-down-settings-btn]'
         }
     }
 
@@ -16,6 +17,11 @@ class HeaderPage extends DefaultPage {
         this.page.waitForVisible(this.locators.avatar);
         this.page.click(this.locators.avatar);
         this.page.waitForVisible(this.locators.controlEmail);
+    }
+
+    openSettings() {
+      this.openControl();
+      this.page.click(this.locators.settingsBtn);
     }
 
     emailFromControl() {
