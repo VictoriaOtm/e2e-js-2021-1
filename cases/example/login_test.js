@@ -1,16 +1,18 @@
 import account from '../../steps/account';
 import letters from '../../steps/letters/index';
 
-// пример теста
+import gnhAccount from '../../steps/gnhAccount';
+import store from '../../steps/store';
+
+
 describe('test id', () => {
-	// используйте beforeEach хук для вызова account.auth(),
-	// если вы тестируете НЕ авторизацию
+	it('Зарегистрироваться на grassnearhome и перейти в профиль', () => {
+		gnhAccount.open('https://grassnearhome.ru/login');
+		gnhAccount.login();
+	});
 
-	it('Авторизоваться и открыть первое письмо на странице', () => {
-		account.open('https://account.mail.ru');
-		account.login();
-
-		letters.waitForList();
-		letters.openLetter();
+	it('Открыть первый магазин и добавить первый товар в корзину', () => {
+		store.open('https://grassnearhome.ru');
+		store.order();
 	});
 });
