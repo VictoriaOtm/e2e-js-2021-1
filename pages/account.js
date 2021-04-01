@@ -13,7 +13,8 @@ class AccountPage extends DefaultPage {
 			nextButton: 'button[name="submit"]',
 			submitButton: 'button[name="submit"]',
 			userEmailHeader: 'a#recivedUn',
-			logoutButton: 'a[name="navbar-exit"]'
+			logoutButton: 'a[name="navbar-exit"]',
+			enterTitle: 'h1.s-content__title'
 		}
 	}
 
@@ -40,7 +41,8 @@ class AccountPage extends DefaultPage {
 	}
 
 	logout() {
-		this.page.click(this.locators.logoutButton)
+		this.page.click(this.locators.logoutButton);
+		this.page.waitForVisible(this.locators.enterTitle);
 	}
 
 	checkAuthorizedEmail(email) {
