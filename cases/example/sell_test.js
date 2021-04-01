@@ -11,15 +11,22 @@ describe('test id', () => {
         account.auth();
     });
 
-    it('Очищение поля после покупки', () => {
+    it('Продажа', () => {
         rateList.openFirstRate();
-        ratePage.fillInput(100);
-        ratePage.buy();
-        const value = ratePage.getInputValue();
-        assert.strictEqual(
-            value,
-            '',
-            `Поле не очистилось после покупки`,
-        )
+        const before = ratePage.getHasForSell();
+        const amount = 10;
+        ratePage.fillInput(amount);
+        ratePage.sell();
+        ratePage.waitMessage();
+        const after = ratePage.getHasForSell();
+        assert.notEqual(
+            before,
+            after,
+            `Значение не изменилось было ${before} стало ${after}`,
+        );
     });
+
+    afterEach(() => {
+        ratePage.buy();
+    })
 });

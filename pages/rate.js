@@ -7,16 +7,17 @@ class RatePage extends DefaultPage {
 
     get locators() {
         return {
-            hasBuy: '.opened-rate__btn-wrapper.buy .opened-rate__available',
+            hasSell: '.opened-rate__btn-wrapper.sell .opened-rate__available',
             sellButton: '.opened-rate__btn.sell',
             buyButton: '.opened-rate__btn.buy',
             input: '[id=rate-amount-input]',
+            message: '[class=message]',
         };
     }
 
     getHasForSell() {
-        this.page.waitForVisible(this.locators.hasBuy);
-        return +this.page.getText(this.locators.hasBuy)[0];
+        this.page.waitForVisible(this.locators.hasSell);
+        return +this.page.getText(this.locators.hasSell).split(' ')[0];
     }
 
     fillInput(amount) {
@@ -25,14 +26,18 @@ class RatePage extends DefaultPage {
         this.page.setValue(this.locators.input, amount);
     }
 
-    buy() {
+    waitMessage() {
+        this.page.waitForVisible(this.locators.message)
+    }
+
+    sell() {
         this.page.waitForVisible(this.locators.sellButton);
         this.page.click(this.locators.sellButton);
     }
 
-    getInputValue() {
-        this.page.waitForVisible(this.locators.input);
-        return this.page.getValue(this.locators.input);
+    buy() {
+        this.page.waitForVisible(this.locators.buyButton);
+        this.page.click(this.locators.sellButton);
     }
 }
 
