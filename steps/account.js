@@ -7,17 +7,15 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open('https://onmeet.ru');
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
-		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
-		this.page.fillPasswordForm(process.env.PASSWORD);
+		this.page.fillLoginForm(process.env.LOGIN, process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+		this.page.checkAuthorizedProfile(process.env.LOGIN);
 	}
 
 	waitForAccount() {

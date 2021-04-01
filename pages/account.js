@@ -2,51 +2,53 @@ import DefaultPage from './default';
 import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
-	constructor() {
-		super('account', '[data-test-id=login-app-read]')
-	}
+    constructor() {
+        super('account', '[data-test-id=login-app-read]')
+    }
 
-	get locators() {
-		return {
-			login: 'input[name="username"]',
-			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
-		}
-	}
+    get locators() {
+        return {
+            profileButton: 'div.header-mobile__logo-wrapper',
+            login: 'input[name="login"]',
+            password: 'input[name="password"]',
+            submitButton: 'button.stdBtn.activable',
+            profileLink: '#profileLink',
+            authModal : '#authModal',
+            profileName: 'h2.profile__name',
+        }
+    }
 
-	fillLoginForm (username) {
-		this.page.waitForVisible(this.locators.login);
-		this.page.click(this.locators.login);
-		this.page.setValue(this.locators.login, username);
-	}
+    fillLoginForm (username, password) {
+        this.page.waitForVisible(this.locators.profileButton);
+        this.page.click(this.locators.profileButton);
+        this.page.waitForVisible(this.locators.login);
+        this.page.click(this.locators.login);
+        this.page.setValue(this.locators.login, username);
+        this.page.waitForVisible(this.locators.password);
+        this.page.click(this.locators.password);
+        this.page.setValue(this.locators.password, password);
+    }
 
-	fillPasswordForm (password) {
-		this.page.waitForVisible(this.locators.password);
-		this.page.click(this.locators.password);
-		this.page.setValue(this.locators.password, password);
-	}
+    checkAuthorizedProfile (username) {
+        this.page.waitForVisible(this.locators.profileButton);
+        this.page.click(this.locators.profileButton);
+        this.page.waitForVisible(this.locators.profileLink);
+        this.page.click(this.locators.profileLink);
+        this.page.waitForVisible(this.locators.profileName);
+        const profileName = this.page.getText(this.locators.profileName).toLowerCase();
+        assert.strictEqual(
+            profileName,
+            username,
+            `Имя авторизованного юзера ${profileName} не соответствует ожидаемому ${username}`,
+        )
+    }
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
+    submit() {
+        this.page.waitForVisible(this.locators.submitButton);
+        this.page.click(this.locators.submitButton);
+        this.page.waitForVisible(this.locators.authModal, 10000, true);
+    }
 
-	submit() {
-		this.page.waitForVisible(this.locators.submitButton);
-		this.page.click(this.locators.submitButton)
-	}
-
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
-	}
 }
 
 export default new AccountPage();
