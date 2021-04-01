@@ -1,16 +1,14 @@
 import account from '../../steps/account';
-import letters from '../../steps/letters/index';
+import profile from '../../steps/profile/index';
 
-// пример теста
-describe('test id', () => {
-	// используйте beforeEach хук для вызова account.auth(),
-	// если вы тестируете НЕ авторизацию
+describe('test profile', () => {
 
-	it('Авторизоваться и открыть первое письмо на странице', () => {
-		account.open('https://account.mail.ru');
-		account.login();
+	beforeEach(() => {
+		account.auth();
+	})
 
-		letters.waitForList();
-		letters.openLetter();
+	it('Авторизоваться и открыть страницу с профилем', () => {
+		profile.openProfilePage();
 	});
+
 });
