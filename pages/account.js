@@ -3,7 +3,7 @@ import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {
-		super('account', '[data-test-id=login-app-read]')
+		super('account', '[data-test-id=login-app-ready]')
 	}
 
 	get locators() {
