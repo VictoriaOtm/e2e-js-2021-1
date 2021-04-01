@@ -8,12 +8,26 @@ class LettersSteps extends DefaultSteps {
 
 	get locators() {
 		return {
-			createFolder: 'div#add-folder-recived'
+			createFolder: 'div#add-folder-recived',
+			notWritten: 'a.not-read-button',
+			toSpam: 'div#button-form-add-letter-folder'
 		}
 	}
 
 	waitForList() {
 		this.page.waitForContainer();
+	}
+
+	waitButton() {
+		this.page.waitForButton(this.locators.notWritten);
+	}
+
+	clickButton() {
+		this.page.clickForButton(this.locators.notWritten);
+	}
+
+	toSpam() {
+		this.page.clickForSpam(this.locators.toSpam);
 	}
 
 	openLetter () {

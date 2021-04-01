@@ -13,6 +13,7 @@ class AccountPage extends DefaultPage {
 			nextButton: 'button[name="submit"]',
 			submitButton: 'button[name="submit"]',
 			userEmailHeader: 'a#recivedUn',
+			logoutButton: 'a[name="navbar-exit"]'
 		}
 	}
 
@@ -36,6 +37,10 @@ class AccountPage extends DefaultPage {
 	submit() {
 		this.page.waitForVisible(this.locators.submitButton);
 		this.page.click(this.locators.submitButton)
+	}
+
+	logout() {
+		this.page.click(this.locators.logoutButton)
 	}
 
 	checkAuthorizedEmail(email) {

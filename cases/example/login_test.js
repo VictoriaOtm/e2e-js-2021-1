@@ -8,5 +8,12 @@ describe('Сценарий: Авторизация, открытие перво�
 
 		letters.waitForList();
 		letters.openLetter();
+
+		letters.waitButton();
+		letters.clickButton();
+
+		account.logout();
+
+		// letters.toSpam();
 	});
 });

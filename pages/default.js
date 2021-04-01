@@ -22,6 +22,18 @@ export default class DefaultPage {
 		this.page.waitForVisible(this.container);
 	}
 
+	waitForButton(path) {
+		this.page.waitForVisible(path);
+	}
+
+	clickForButton(path) {
+		this.page.click(path);
+	}
+
+	clickForSpam(path) {
+		this.page.click(path);
+	}
+
 	waitForUrl(value, timeout, revert) {
 		let url, actual;
 		try {
@@ -78,7 +90,4 @@ export default class DefaultPage {
 
 		return actual.includes(name);
 	}
-
-
-
 }

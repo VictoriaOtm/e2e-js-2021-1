@@ -23,6 +23,10 @@ class AccountSteps extends DefaultSteps {
 	waitForAccount() {
 		this.page.waitForContainer();
 	}
+
+	logout() {
+		this.page.logout();
+	}
 }
 
 export default new AccountSteps();
