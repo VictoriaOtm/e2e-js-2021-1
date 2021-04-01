@@ -1,4 +1,4 @@
-import DefaultPage from '../default';
+import DefaultPage from './default';
 
 class LettersPage extends DefaultPage {
 	constructor() {

@@ -1,5 +1,5 @@
-import DefaultSteps from '../default';
-import page from '../../pages/letters';
+import DefaultSteps from './default';
+import page from '../pages/letter';
 
 class LettersSteps extends DefaultSteps {
 	constructor() {
