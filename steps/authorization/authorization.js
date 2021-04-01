@@ -1,5 +1,5 @@
-import DefaultSteps from './default';
-import page from '../pages/account';
+import DefaultSteps from '../default';
+import page from '../../pages/authorization/authorization';
 
 class AccountSteps extends DefaultSteps {
 	constructor() {
@@ -12,7 +12,6 @@ class AccountSteps extends DefaultSteps {
 		this.page.fillEmailForm(this.userEmail);
 		this.page.fillPasswdForm(this.userPassword);
 		this.page.submit();
-		this.page.checkAuthorizedUser(this.userEmail);
 	}
 }
 

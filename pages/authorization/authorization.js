@@ -1,9 +1,6 @@
-import DefaultPage from './default';
-import {strict as assert} from 'assert';
-
-class AccountPage extends DefaultPage {
+class AccountPage {
     constructor() {
-        super('account', '[data-test-id=login-app-read]')
+        this.page = browser;
     }
 
     get locators() {
@@ -38,21 +35,6 @@ class AccountPage extends DefaultPage {
 
         this.page.waitForVisible(submitBtnSelector);
         this.page.click(submitBtnSelector);
-    }
-
-    checkAuthorizedUser(email) {
-        const profileLinkSelector = this.locators.profileLink;
-        const userEmailSelector = this.locators.userEmail
-
-        this.page.waitForVisible(profileLinkSelector); // Дожидаемся появления иконки перехода в личный кабинет
-        this.page.click(profileLinkSelector);
-        this.page.waitForVisible(userEmailSelector); // Дожидаемся появления информации об email пользователя
-        const userEmail = this.page.getText(userEmailSelector);
-        assert.strictEqual(
-            userEmail,
-            email,
-            `Email авторизованного пользователя ${userEmail} не соответствует ожидаемому ${email}`,
-        )
     }
 }
 
