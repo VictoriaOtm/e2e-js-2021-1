@@ -7,21 +7,16 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
-		this.waitForAccount();
+		this.open('https://softree.group/signin');
+		this.page.waitForContainer();
 		this.login();
 	}
 
 	login() {
+		this.page.goToLogin();
 		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
-	}
-
-	waitForAccount() {
-		this.page.waitForContainer();
 	}
 }
 
