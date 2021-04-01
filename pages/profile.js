@@ -10,7 +10,7 @@ class PlaylistPage extends DefaultPage {
         return {
             playlistInput: 'input[placeholder="Напишите название"]',
             submit: '//button[text()="Создать"]',
-            nameOfPlaylist: 'div.name__filmlenta_genre--2DRas',
+            nameOfPlaylist: 'div[class="name__filmlenta_genre--2DRas"]',
         }
     }
 
@@ -24,10 +24,11 @@ class PlaylistPage extends DefaultPage {
     }
 
     check(name) {
+        this.page.waitForVisible(this.locators.nameOfPlaylist);
         const text = this.page.getText(this.locators.nameOfPlaylist);
         assert.strictEqual(
             name,
-            text,
+            text[0],
             `Название плэйлиста не совпадает с ожидаемым`,
         )
     }
