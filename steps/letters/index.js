@@ -10,7 +10,9 @@ class LettersSteps extends DefaultSteps {
 		return {
 			createFolder: 'div#add-folder-recived',
 			notWritten: 'a.not-read-button',
-			toSpam: 'div#button-form-add-letter-folder'
+			toSpam: 'div#button-form-add-letter-folder',
+			clickToSpam: 'button.btn.h-full-width[type="submit"]',
+			ifSpam:'div.main-columns.project_scroll'
 		}
 	}
 
@@ -33,6 +35,18 @@ class LettersSteps extends DefaultSteps {
 	openLetter () {
 		this.page.clickLetter();
 		this.page.checkLetterOpened();
+	}
+
+	checkForm() {
+		this.page.checkForForm(this.locators.clickToSpam);
+	}
+
+	clickToSpam() {
+		this.page.clickForToSpam(this.locators.clickToSpam);
+	}
+
+	checkIfSpam() {
+		this.page.checkForIfSpam(this.locators.ifSpam);
 	}
 }
 

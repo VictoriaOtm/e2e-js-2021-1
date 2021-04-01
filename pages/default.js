@@ -1,3 +1,5 @@
+import {strict as assert} from "assert";
+
 export default class DefaultPage {
 	constructor(name, container) {
 		this.name = name;
@@ -32,6 +34,30 @@ export default class DefaultPage {
 
 	clickForSpam(path) {
 		this.page.click(path);
+	}
+
+	checkForForm(path) {
+		this.page.waitForVisible(path);
+		const checkMenu = this.page.getText(path);
+		assert.strictEqual(
+			checkMenu[1],
+			'ДОБАВИТЬ',
+			`Попап не открылся`,
+		);
+	}
+
+	clickForToSpam(path) {
+		this.page.click(path);
+	}
+
+	checkForIfSpam(path) {
+		this.page.waitForVisible(path);
+		const check = this.page.getText(path);
+		assert.strictEqual(
+			check,
+			'',
+			`Письмо не ушло в спам`,
+		);
 	}
 
 	waitForUrl(value, timeout, revert) {
