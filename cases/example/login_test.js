@@ -1,16 +1,23 @@
+import main from '../../steps/main/main';
 import account from '../../steps/account';
-import letters from '../../steps/letters/index';
 
 // пример теста
 describe('test id', () => {
-	// используйте beforeEach хук для вызова account.auth(),
-	// если вы тестируете НЕ авторизацию
 
-	it('Авторизоваться и открыть первое письмо на странице', () => {
-		account.open('https://account.mail.ru');
+	it('Авторизоваться', () => {
+		account.open('https://studhunt.ru/auth');
 		account.login();
+	});
+});
 
-		letters.waitForList();
-		letters.openLetter();
+describe('test id', () => {
+	
+	beforeEach(() =>{
+		account.auth()
+	})
+
+	it('Проверить переход на страницу с вакансиями по полю “профессии” при клике на поиск', () => {	
+		main.waitForPage();
+		main.searchByProfession();
 	});
 });

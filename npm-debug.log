@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'report' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose run-script [ 'prereport', 'report', 'postreport' ]
+5 info prereport octotestw19@1.0.0
+6 info report octotestw19@1.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info octotestw19@1.0.0 Failed to exec report script
+9 error octotestw19@1.0.0 report: `mkdir -p ./cache/allure-report && allure generate -c -o ./cache/allure-report ./cache/allure-results && allure open ./cache/allure-report`
+9 error Exit status 1
+10 error Failed at the octotestw19@1.0.0 report script.
+10 error This is most likely a problem with the octotestw19 package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     mkdir -p ./cache/allure-report && allure generate -c -o ./cache/allure-report ./cache/allure-results && allure open ./cache/allure-report
+10 error You can get their info via:
+10 error     npm owner ls octotestw19
+10 error There is likely additional logging output above.
+11 error System Linux 5.4.0-48-generic
+12 error command "/usr/local/bin/node" "/usr/local/bin/npm" "run" "report"
+13 error cwd /home/kostikan/js/e2e-js-2021-1
+14 error node -v v0.10.33
+15 error npm -v 1.4.28
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]
