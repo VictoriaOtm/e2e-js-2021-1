@@ -23,6 +23,7 @@
     "webdriverio": "^4.13.2"
   },
   "dependencies": {
+    "10": "0.0.1",
     "chromedriver": "2.43.1",
     "selenium-standalone": "6.15.3"
   }
