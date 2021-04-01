@@ -8,12 +8,25 @@ class AccountPage extends DefaultPage {
 
 	get locators() {
 		return {
-			login: 'input[name="username"]',
+			arrow: 'img[class="header__arrow"]',
+			login_form: 'a[data-modalstatus="signin"]',
+			login: 'input[name="email"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
+			submitButton: 'button[data-formtype="signin"]',
+			logout_form: 'a[data-event="logoutUser"]',
 			userEmailHeader: '#PH_user-email',
+			browseHref: 'a[href="/browse"]',
+			avatar: 'img[class="header__avatar"]',
+			closePopup: 'img[class="btn-close__img"]',
+			labelProfile: 'a[class="mini-modal__btn"]'
 		}
+	}
+
+	moveToLoginForm () {
+		this.page.waitForVisible(this.locators.arrow);
+		this.page.click(this.locators.arrow);
+		this.page.waitForVisible(this.locators.login_form);
+		this.page.click(this.locators.login_form);
 	}
 
 	fillLoginForm (username) {
@@ -28,24 +41,27 @@ class AccountPage extends DefaultPage {
 		this.page.setValue(this.locators.password, password);
 	}
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
-
 	submit() {
 		this.page.waitForVisible(this.locators.submitButton);
 		this.page.click(this.locators.submitButton)
 	}
 
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
+	checkAuthorized() {
+		this.page.click(this.locators.closePopup);
+		this.page.waitForVisible(this.locators.browseHref);
+		this.page.click(this.locators.browseHref);
+		this.page.waitForVisible(this.locators.arrow);
+		this.page.click(this.locators.arrow);
+
+		const labels = this.page.getText(this.locators.labelProfile);
+
+		const result = Array.from(labels).indexOf("Главная") > -1;
+
 		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
+			result,
+			true,
+			`User not authorised`,
+		);
 	}
 }
 
