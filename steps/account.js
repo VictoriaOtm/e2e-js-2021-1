@@ -13,11 +13,9 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	login() {
-		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
-		this.page.fillPasswordForm(process.env.PASSWORD);
+		this.page.fillLoginAndPasswordForm(process.env.LOGIN, process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+		this.page.checkAuthorizedProfile(process.env.LOGIN);
 	}
 
 	waitForAccount() {
