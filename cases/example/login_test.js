@@ -1,16 +1,17 @@
 import account from '../../steps/account';
-import letters from '../../steps/letters/index';
+import header from '../../steps/header';
+import {strict as assert} from "assert";
 
-// пример теста
 describe('test id', () => {
-	// используйте beforeEach хук для вызова account.auth(),
-	// если вы тестируете НЕ авторизацию
+	it('Авторизоваться', () => {
+		account.auth();
 
-	it('Авторизоваться и открыть первое письмо на странице', () => {
-		account.open('https://account.mail.ru');
-		account.login();
-
-		letters.waitForList();
-		letters.openLetter();
+		const headerEmail = header.getEmail();
+		const email = process.env.LOGIN;
+		assert.strictEqual(
+			headerEmail,
+			email,
+			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
+		)
 	});
 });
