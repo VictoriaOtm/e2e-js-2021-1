@@ -1,52 +1,48 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
+import {strict as assert} from 'assert';
 
 class AccountPage extends DefaultPage {
-	constructor() {
-		super('account', '[data-test-id=login-app-read]')
-	}
+    constructor() {
+        super('account', '#app')
+    }
 
-	get locators() {
-		return {
-			login: 'input[name="username"]',
-			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
-		}
-	}
+    get locators() {
+        return {
+            login: '#username',
+            password: '#password',
+            submitButton: '#submit',
+            profileLink: '#menu > :nth-child(2) > .menu-link', // Вот такой вот кривой селектор для получения ссылки на профиль, откуда можно получить статус авторизации нужного пользователя
+            menu: '#menu'
+        }
+    }
 
-	fillLoginForm (username) {
-		this.page.waitForVisible(this.locators.login);
-		this.page.click(this.locators.login);
-		this.page.setValue(this.locators.login, username);
-	}
+    fillLoginForm(username) {
+        this.page.waitForVisible(this.locators.login);
+        this.page.click(this.locators.login);
+        this.page.setValue(this.locators.login, username);
+    }
 
-	fillPasswordForm (password) {
-		this.page.waitForVisible(this.locators.password);
-		this.page.click(this.locators.password);
-		this.page.setValue(this.locators.password, password);
-	}
+    fillPasswordForm(password) {
+        this.page.waitForVisible(this.locators.password);
+        this.page.click(this.locators.password);
+        this.page.setValue(this.locators.password, password);
+    }
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
+    submit() {
+        this.page.waitForVisible(this.locators.submitButton);
+        this.page.click(this.locators.submitButton)
+    }
 
-	submit() {
-		this.page.waitForVisible(this.locators.submitButton);
-		this.page.click(this.locators.submitButton)
-	}
-
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
-	}
+    checkAuthorizedLogin(username) {
+        this.page.waitForVisible(this.locators.menu);
+        this.page.waitForVisible(this.locators.profileLink);
+        const profileHref = this.page.getAttribute(this.locators.profileLink, 'href');
+        assert.strictEqual(
+            profileHref,
+            `https://pinteo.ru/@${username}`,
+            `Username авторизованного юзера ${profileHref} не соответствует ожидаемому ${username}`,
+        );
+    }
 }
 
 export default new AccountPage();

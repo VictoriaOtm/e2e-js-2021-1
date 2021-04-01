@@ -4,6 +4,10 @@ export default class DefaultPage {
 		this.container = container;
 	}
 
+	refresh() {
+		browser.refresh();
+	}
+
 	get locators() {
 		return {
 			container: 'body'
