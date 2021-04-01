@@ -4,20 +4,24 @@ import page from '../pages/account';
 class AccountSteps extends DefaultSteps {
 	constructor() {
 		super(page);
+		this.root = 'https://pinteo.ru';
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open(this.root + '/login');
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+		this.page.checkAuthorized(this.root, process.env.LOGIN);
+	}
+
+	logout() {
+		this.page.logout();
 	}
 
 	waitForAccount() {

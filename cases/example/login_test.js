@@ -1,16 +1,12 @@
 import account from '../../steps/account';
-import letters from '../../steps/letters/index';
 
 // пример теста
-describe('test id', () => {
+describe('test pinteo - auth', () => {
 	// используйте beforeEach хук для вызова account.auth(),
 	// если вы тестируете НЕ авторизацию
 
-	it('Авторизоваться и открыть первое письмо на странице', () => {
-		account.open('https://account.mail.ru');
+	it('Проверка авторизации на Pinteo', () => {
+		account.open('https://pinteo.ru/login');
 		account.login();
-
-		letters.waitForList();
-		letters.openLetter();
 	});
 });
