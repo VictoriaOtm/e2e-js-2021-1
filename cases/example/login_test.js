@@ -1,6 +1,7 @@
 import account from '../../steps/account';
 import letters from '../../steps/letters/index';
 
+
 // пример теста
 describe('test id', () => {
 	// используйте beforeEach хук для вызова account.auth(),
@@ -13,4 +14,7 @@ describe('test id', () => {
 		letters.waitForList();
 		letters.openLetter();
 	});
+
+
 });
+
