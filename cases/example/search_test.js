@@ -10,6 +10,7 @@ describe('test search', () => {
 
 	it('Проверить переход на страницу с вакансиями по полю “профессии” при клике на поиск', () => {	
 		main.waitForPage();
-		main.searchByProfession();
+        main.searchByProfession();
+        main.checkVacOpen();
 	});
 });

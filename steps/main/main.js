@@ -11,6 +11,10 @@ class MainSteps extends DefaultSteps {
         this.page.find();
     }
 
+    checkVacOpen(){
+        this.page.checkVacancyOpen();
+    }
+
     waitForPage(){
         this.page.waitForContainer();
     }

@@ -9,7 +9,8 @@ class MainPage extends DefaultPage {
 	get locators() {
 		return {
             profession: 'input[id="searchJob"]',
-            find: 'div[id="searchBtn"]'
+            find: 'div[id="searchBtn"]',
+            vacBody: '.main',
 		}
 	}
 
@@ -21,7 +22,11 @@ class MainPage extends DefaultPage {
 
     find(){
         this.page.waitForVisible(this.locators.find);
-        this.page.click(this.locators.find);
+        this.page.click(this.locators.find);   
+    }
+
+    checkVacancyOpen(){
+        this.page.waitForVisible(this.locators.vacBody)
     }
 
 }
