@@ -18,5 +18,5 @@
 Затем запускаем:
 `LOGIN=<your_test_email> PASSWORD=<your_password> npm test`
 
-![Uploading image.png…]()
+
 
