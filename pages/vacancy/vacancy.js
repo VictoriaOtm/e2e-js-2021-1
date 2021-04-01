@@ -10,6 +10,8 @@ class VacancyPage {
             errorSubmit: 'span.error',
             submitVacancy: 'button[id="send-form-empl"]',
             vacancyTitle: 'input[id="summary-name"]',
+            vacancySalaryMin:'input[id="salary_min"]',
+            vacancySalaryMax:'input[id="salary_max"]',
             createVacancyLink: 'a.menu-list-block__item_button',
         }
     }
@@ -51,6 +53,28 @@ class VacancyPage {
             errTextArray,
             expected,
             `Ошибки при создании незаполненной вакансии ${errTextArray} не соответствуют ожидаемым ${expected}`,
+        )
+    }
+
+    checkInvalidSalary() {
+        const errorInvalidSalary = "Минимальная зарплата не может быть больше максимальной";
+
+        const vacancySalaryMinSelector = this.locators.vacancySalaryMin;
+        const vacancySalaryMaxSelector = this.locators.vacancySalaryMax;
+        const submitVacancySelector = this.locators.submitVacancy;
+        const errorsSubmitSelector = this.locators.errorSubmit;
+
+        this.page.waitForVisible(vacancySalaryMinSelector); // Дожидаемся появления формы создания
+        this.page.setValue(vacancySalaryMinSelector, "20"); // заполняем поле минимальной зп
+        this.page.setValue(vacancySalaryMaxSelector, "10"); // заполняем поле максимальной зп
+        this.page.click(submitVacancySelector);
+        this.page.waitForVisible(errorsSubmitSelector);
+        const errTextArray = this.page.getText(errorsSubmitSelector);
+
+        assert.strictEqual(
+            errTextArray[5],
+            errorInvalidSalary,
+            `Ошибки при создании вакансии с зп мин > зп макс: ${errTextArray} не соответствуют ожидаемой ${errorInvalidSalary}`,
         )
     }
 }
