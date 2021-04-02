@@ -11,6 +11,7 @@ class ProfileSteps extends DefaultSteps {
     }
 
     createEmpty() {
+        this.page.fillFormTitle();
         this.page.checkEmptyVacancyError();
     }
 

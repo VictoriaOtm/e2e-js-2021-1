@@ -1,3 +1,5 @@
+import {strict as assert} from "assert";
+
 class AccountPage {
     constructor() {
         this.page = browser;

@@ -3,6 +3,7 @@ import {strict as assert} from "assert";
 class ProfilePage {
     constructor() {
         this.page = browser;
+        this.timeout = 1500;
     }
 
     get locators() {
@@ -19,14 +20,14 @@ class ProfilePage {
     clickProfile() {
         const profileLinkSelector = this.locators.profileLink;
 
-        this.page.waitForVisible(profileLinkSelector); // Дожидаемся появления иконки перехода в личный кабинет
+        this.page.waitForVisible(profileLinkSelector, this.timeout); // Дожидаемся появления иконки перехода в личный кабинет
         this.page.click(profileLinkSelector);
     }
 
     checkEmailInProfile(email) {
         const userEmailSelector = this.locators.userEmail;
 
-        this.page.waitForVisible(userEmailSelector); // Дожидаемся появления информации об email пользователя
+        this.page.waitForVisible(userEmailSelector, this.timeout); // Дожидаемся появления информации об email пользователя
         const userEmail = this.page.getText(userEmailSelector);
         assert.strictEqual(
             userEmail,
