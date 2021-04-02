@@ -4,7 +4,7 @@ import profile from '../steps/profile/profile'
 
 
 describe('test vacancy', () => {
-    before(() => {
+    beforeEach(() => {
         account.open('https://www.studhunt.ru/auth');
         account.login();
 

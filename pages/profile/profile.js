@@ -3,7 +3,7 @@ import {strict as assert} from "assert";
 class ProfilePage {
     constructor() {
         this.page = browser;
-        this.timeout = 1500;
+        this.timeout = 2500;
     }
 
     get locators() {
