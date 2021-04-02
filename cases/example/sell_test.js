@@ -3,15 +3,12 @@ import rateList from "../../steps/rateList";
 import ratePage from '../../pages/rate';
 import {strict as assert} from "assert";
 
-// пример теста
-describe('test id', () => {
-// 	используйте beforeEach хук для вызова account.auth(),
-// 	если вы тестируете НЕ авторизацию
+describe('Продажа', () => {
     beforeEach(() => {
         account.auth();
     });
 
-    it('Продажа', () => {
+    it('Изменение суммы кошелька при продаже валюты', () => {
         rateList.openFirstRate();
         const before = ratePage.getHasForSell();
         const amount = 10;

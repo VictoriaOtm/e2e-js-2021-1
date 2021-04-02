@@ -12,7 +12,6 @@ class AccountPage extends DefaultPage {
 			password: 'input[name="password"]',
 			submitButton: 'input[type="submit"]',
 			signInButton: '[class=signin-link]',
-			userEmailHeader: '#PH_user-email',
 		}
 	}
 
