@@ -11,7 +11,6 @@ class AccountPage extends DefaultPage {
 			email: 'input[name="email"]',
 			password: 'input[name="password"]',
 			submitButton: 'button[id="entBtnAuth"]',
-			vacations: 'a[href="/employersList"]'
 		}
 	}
 
@@ -33,10 +32,8 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.submitButton)
 	}
 
-	vacations(){
-		this.page.waitForVisible(this.locators.vacations);
-		this.page.click(this.locators.vacations)
-	}
+	
+
 
 }
 

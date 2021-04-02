@@ -11,13 +11,20 @@ class MainPage extends DefaultPage {
             profession: 'input[id="searchJob"]',
             find: 'div[id="searchBtn"]',
             vacBody: '.main',
+            vacTitle: '.list-row'
 		}
 	}
 
-	fillProfessionForm (prof) {
+    get searchData () {
+        return {
+            profession: 'воспитатель',
+        }
+    }
+
+	fillProfessionForm () {
         this.page.waitForVisible(this.locators.profession);
         this.page.click(this.locators.profession);
-        this.page.setValue(this.locators.profession,prof);
+        this.page.setValue(this.locators.profession,this.searchData.profession);
 	}
 
     find(){
@@ -25,8 +32,15 @@ class MainPage extends DefaultPage {
         this.page.click(this.locators.find);   
     }
 
-    checkVacancyOpen(){
+    checkVacancyTitles(){
         this.page.waitForVisible(this.locators.vacBody)
+        const titles = this.page.getText(this.locators.vacTitle) 
+        titles.forEach(element => (
+            assert.strictEqual(element.toLowerCase().includes(this.searchData.profession),
+            true,
+            `Профессия в  вакансии ${element} должна включать поисковую строку ${this.searchData.profession}`,
+            )
+        ))
     }
 
 }

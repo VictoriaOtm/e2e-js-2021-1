@@ -7,16 +7,12 @@ class MainSteps extends DefaultSteps {
 	}
 
     searchByProfession(){
-        this.page.fillProfessionForm('kek');
+        this.page.fillProfessionForm();
         this.page.find();
     }
 
-    checkVacOpen(){
-        this.page.checkVacancyOpen();
-    }
-
-    waitForPage(){
-        this.page.waitForContainer();
+    checkVacTitles(){
+        this.page.checkVacancyTitles();
     }
 }
 

@@ -4,6 +4,8 @@ import page from '../pages/account';
 class AccountSteps extends DefaultSteps {
 	constructor() {
 		super(page);
+		this.email = process.env.EMAIL;
+		this.password = process.env.PASSWORD;
 	}
 
 	auth() {
@@ -13,9 +15,12 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	login() {
-		this.page.fillLoginForm(process.env.EMAIL);
-		this.page.fillPasswordForm(process.env.PASSWORD);
+		this.page.fillLoginForm(this.email);
+		this.page.fillPasswordForm(this.password);
 		this.page.submit();
+	}
+	checkEmail(){
+		this.page.checkEmail(this.email);
 	}
 
 	waitForAccount() {
