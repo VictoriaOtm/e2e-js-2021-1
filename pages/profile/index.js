@@ -3,12 +3,11 @@ import {strict as assert} from "assert";
 
 class ProfilePage extends DefaultPage {
     constructor() {
-        super('letters', '.profile_page')
+        super('profile', '.profile_page')
     }
 
     get locators () {
         return {
-            container: this.container,
             profileButton: 'a[href="/profile"]',
             userEmailHeader: 'div[id="email"]',
         }
@@ -19,18 +18,14 @@ class ProfilePage extends DefaultPage {
         this.page.click(this.locators.profileButton);
     }
 
-    // waitForList() {
-    //     this.page.waitForContainer();
-    // }
-
     checkAuthorizedEmail(email) {
         this.page.waitForVisible(this.locators.userEmailHeader);
-        const headerEmail = this.page.getText(this.locators.userEmailHeader);
+        const profileEmail = this.page.getText(this.locators.userEmailHeader);
 
         assert.strictEqual(
-            headerEmail,
+            profileEmail,
             email,
-            `Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
+            `Email авторизованного юзера ${profileEmail} не соответствует ожидаемому ${email}`,
         )
     }
 }

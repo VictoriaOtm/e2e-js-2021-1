@@ -3,7 +3,7 @@ import {strict as assert} from "assert";
 
 class ResumeCreatePage extends DefaultPage {
     constructor() {
-        super('letters', '.profile_page')
+        super('create', '.main')
     }
 
     get locators () {

@@ -2,9 +2,8 @@ import resume from '../../steps/resume/index';
 import account from '../../steps/account';
 
 describe('test create resume', () => {
-	beforeEach(function () {
-		account.open('https://studhunt.ru/auth');
-		account.login();
+	beforeEach(() => {
+		account.auth();
 	});
 
 	it('Создать резюме', () => {
