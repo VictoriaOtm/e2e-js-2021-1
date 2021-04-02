@@ -2,7 +2,7 @@ import account from '../steps/account';
 import header from '../steps/header';
 import {strict as assert} from "assert";
 
-describe('Login page', () => {
+describe('Login', () => {
 	beforeEach(() => {
 		account.auth();
 	});

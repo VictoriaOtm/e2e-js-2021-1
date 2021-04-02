@@ -2,7 +2,7 @@ import settings from '../steps/settings';
 import account from '../steps/account';
 import { strict as assert } from "assert";
 
-describe('Settings', () => {
+describe('Password', () => {
 	beforeEach(() => {
 		account.auth();
 	});
