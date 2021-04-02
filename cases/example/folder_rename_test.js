@@ -6,8 +6,8 @@ describe('test id', () => {
 		account.auth();
 	});
 
-	it('Создание папки', () => {
+	it('Переименование папки', () => {
 		folder.open('https://cloud.mail.ru/home/');
-		folder.createFolder(process.env.FOLDER);
+		folder.renameFolder(process.env.FOLDER);
 	});
 });

@@ -14,10 +14,9 @@ class FolderPage extends DefaultPage {
             folderInput: 'input[type="text"]',
             createFolderButton: 'button[class="ui fluid primary button"]',
             allFilesButton: 'div[data-name="/"]',
-            removeButton: 'div[data-name="remove"]',
-            confirmRemoveButton: 'button[data-name="remove"]',
-            promoCloseButton: 'div[class="b-panel__close"]',
-            closeOkWindow: 'button[title="Закрыть"]',
+            moreButton: 'div[data-name="more"]',
+            renameButton: 'div[data-name="rename"]',
+            confirmButton: 'button[data-name="confirm"]',
 		}
 	}
 
@@ -63,34 +62,19 @@ class FolderPage extends DefaultPage {
         this.page.click(selector);
     }
 
-    closePromo() {
-        this.page.waitForVisible(this.locators.promoCloseButton);
-        this.page.click(this.locators.promoCloseButton);
+    clickOnMore() {
+        this.page.waitForVisible(this.locators.moreButton);
+        this.page.click(this.locators.moreButton);
     }
 
-    clickOnRemoveButton() {
-        this.page.waitForVisible(this.locators.removeButton);
-        this.page.click(this.locators.removeButton);
+    clickOnRename() {
+        this.page.waitForVisible(this.locators.renameButton);
+        this.page.click(this.locators.renameButton);
     }
 
-    clickOnConfirmRemoveButton() {
-        this.page.waitForVisible(this.locators.confirmRemoveButton);
-        this.page.click(this.locators.confirmRemoveButton);
-    }
-
-    closeOkWindow() {
-        this.page.waitForVisible(this.locators.closeOkWindow);
-        this.page.click(this.locators.closeOkWindow);
-    }
-
-    checkFolder(folderName) {
-        const selector = 'div[data-name="/' + folderName + '"]';
-        const currentFolderName = this.page.getText(selector);
-        assert.strictEqual(
-			"aa",
-			currentFolderName,
-			`Ожидаем ${folderName}\nПолучаем ${currentFolderName}`,
-		)
+    clickConfirmButton() {
+        this.page.waitForVisible(this.locators.confirmButton);
+        this.page.click(this.locators.confirmButton);
     }
 }
 

@@ -14,14 +14,14 @@ class FolderSteps extends DefaultSteps {
         this.page.checkNewFolder(folderName);
 	}
 
-    deleteFolder(folderName) {
+    renameFolder(folderName) {
         this.page.openAllFiles();
         this.page.clickOnFolder(folderName);
-        this.page.closePromo();
-        this.page.clickOnRemoveButton();
-        this.page.clickOnConfirmRemoveButton();
-        this.page.closeOkWindow();
-        this.page.checkFolder(folderName);
+        this.page.clickOnMore();
+        this.page.clickOnRename();
+        this.page.fillFolderInput(folderName+folderName);
+        this.page.clickConfirmButton()
+        this.page.checkNewFolder(folderName+folderName);
     }
 
 	waitForAccount() {

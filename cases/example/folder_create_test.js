@@ -8,7 +8,6 @@ describe('test id', () => {
 
 	it('Создание папки', () => {
 		folder.open('https://cloud.mail.ru/home/');
-		// folder.createFolder(process.env.FOLDER);
-		folder.deleteFolder(process.env.FOLDER);
+		folder.createFolder(process.env.FOLDER);
 	});
 });
