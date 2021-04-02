@@ -25,14 +25,10 @@ class ProfilePage extends DefaultPage {
         this.page.click(this.locators.submitButton)
     }
 
-    checkUpdatedDescription(description) {
+    get description() {
         this.page.waitForVisible(this.locators.description);
-        const currentDescription = this.page.getValue(this.locators.description);
-        assert.strictEqual(
-            currentDescription,
-            description,
-            `Текущее описание профиля ${currentDescription} не соответствует ожидаемому ${description}`,
-        );
+        this.page.waitForText(this.locators.description);
+        return this.page.getValue(this.locators.description);
     }
 }
 

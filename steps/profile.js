@@ -6,11 +6,14 @@ class ProfileSteps extends DefaultSteps {
         super(page);
     }
 
-    changeDescription() {
-        this.page.fillDescriptionForm(process.env.DESCRIPTION);
+    changeDescription(description) {
+        this.page.fillDescriptionForm(description);
         this.page.submit();
         this.page.refresh();
-        this.page.checkUpdatedDescription(process.env.DESCRIPTION);
+    }
+
+    get currentDescription() {
+        return this.page.description;
     }
 }
 

@@ -1,5 +1,6 @@
 import DefaultSteps from './default';
 import page from '../pages/account';
+import {strict as assert} from "assert";
 
 class AccountSteps extends DefaultSteps {
     constructor() {
@@ -16,7 +17,14 @@ class AccountSteps extends DefaultSteps {
         this.page.fillLoginForm(process.env.LOGIN);
         this.page.fillPasswordForm(process.env.PASSWORD);
         this.page.submit();
-        this.page.checkAuthorizedLogin(process.env.LOGIN);
+    }
+
+    logout() {
+        this.page.logout();
+    }
+
+    get authorizedLogin() {
+        return this.page.authorizedLogin;
     }
 
     waitForAccount() {
