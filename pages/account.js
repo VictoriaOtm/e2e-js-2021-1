@@ -16,9 +16,11 @@ class AccountPage extends DefaultPage {
 			logout_form: 'a[data-event="logoutUser"]',
 			userEmailHeader: '#PH_user-email',
 			browseHref: 'a[href="/browse"]',
+			serialsHref: 'a[href="/serials"]',
+			myListHref: 'a[href="/mylist"]',
 			avatar: 'img[class="header__avatar"]',
 			closePopup: 'img[class="btn-close__img"]',
-			labelProfile: 'a[class="mini-modal__btn"]'
+			labelProfile: 'a[class="mini-modal__btn"]',
 		}
 	}
 
@@ -48,14 +50,24 @@ class AccountPage extends DefaultPage {
 
 	checkAuthorized() {
 		this.page.click(this.locators.closePopup);
+
 		this.page.waitForVisible(this.locators.browseHref);
 		this.page.click(this.locators.browseHref);
+
 		this.page.waitForVisible(this.locators.arrow);
 		this.page.click(this.locators.arrow);
 
 		const labels = this.page.getText(this.locators.labelProfile);
 
-		const result = Array.from(labels).indexOf("Главная") > -1;
+		// browser.waitUntil(
+		// 	() => labels[0] === 'Профиль',
+		// 	{
+		// 		timeout: 5000,
+		// 		timeoutMsg: 'expected text to be different after 5s'
+		// 	}
+		// );
+
+		const result = Array.from(labels).indexOf("Профиль") > -1;
 
 		assert.strictEqual(
 			result,
