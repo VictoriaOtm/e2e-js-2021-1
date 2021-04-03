@@ -16,7 +16,7 @@ class ProfileSteps extends DefaultSteps {
 	}
 
 	editSkills() {
-		let testSkill = "Test skill"
+		const testSkill = "Test skill";
 		this.page.clickEditSkills();
 		this.page.fillSkillsField(testSkill);
 		this.page.clickUpdateSkills();
