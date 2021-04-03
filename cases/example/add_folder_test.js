@@ -4,7 +4,7 @@ import board from "../../steps/board";
 describe('Открыть меню Добавить папку', () => {
 	// используйте beforeEach хук для вызова account.auth(),
 	// если вы тестируете НЕ авторизацию
-	beforeEach(()=>{
+	before(()=>{
 		account.auth();
 	});
 
