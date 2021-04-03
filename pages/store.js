@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class StorePage extends DefaultPage {
 	constructor() {
@@ -21,17 +20,8 @@ class StorePage extends DefaultPage {
 	addFood () {
 		this.page.waitForVisible(this.locators.food);
 		this.page.click(this.locators.food);
-	}
-
-	checkProductAddedToCart() {
 		this.page.waitForText(this.locators.food);
-		const foodSign = this.page.getText(this.locators.food);
-        const added = "Добавлено!";
-		assert.strictEqual(
-			foodSign,
-			added,
-			'Продукт успешно добавлен в корзину!',
-		)
+		return this.page.getText(this.locators.food)[0];	//	Get text of the first product
 	}
 }
 

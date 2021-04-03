@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class GNHAccountPage extends DefaultPage {
 	constructor() {
@@ -34,13 +33,7 @@ class GNHAccountPage extends DefaultPage {
 
 	checkProfilePageOpened() {
 		this.page.waitForText(this.locators.profilePageHeader);
-		const headerProfile = this.page.getText(this.locators.profilePageHeader);
-        const originHeader = "Ваш профиль";
-		assert.strictEqual(
-			headerProfile,
-			originHeader,
-			'Страница профиля успешно открыта',
-		)
+		return this.page.getText(this.locators.profilePageHeader);
 	}
 }
 

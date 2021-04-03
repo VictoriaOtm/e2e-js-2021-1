@@ -7,12 +7,12 @@ class StoreSteps extends DefaultSteps {
 	}
 
 	order() {
-		this.addToCart();
+		return this.addToCart();
 	}
 
 	addToCart() {
         this.page.openStore();
-		this.page.addFood();
+		return this.page.addFood();
 	}
 }
 

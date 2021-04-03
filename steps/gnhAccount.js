@@ -1,5 +1,4 @@
 import DefaultSteps from './default';
-// import page from '../pages/account';
 import page from '../pages/gnhAccount';
 
 class AccountSteps extends DefaultSteps {
@@ -8,7 +7,7 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.login();
+		return this.login();
 	}
 
     openAuthPage() {
@@ -19,7 +18,7 @@ class AccountSteps extends DefaultSteps {
 		this.page.fillLoginForm(process.env.LOGIN);
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkProfilePageOpened();
+		return this.page.checkProfilePageOpened();
 	}
 }
 
