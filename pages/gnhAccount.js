@@ -33,7 +33,7 @@ class GNHAccountPage extends DefaultPage {
 	}
 
 	checkProfilePageOpened() {
-		this.page.waitForVisible(this.locators.profilePageHeader);
+		this.page.waitForText(this.locators.profilePageHeader);
 		const headerProfile = this.page.getText(this.locators.profilePageHeader);
         const originHeader = "Ваш профиль";
 		assert.strictEqual(

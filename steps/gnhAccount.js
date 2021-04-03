@@ -8,7 +8,6 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://grassnearhome.ru/login');
 		this.login();
 	}
 

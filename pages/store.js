@@ -24,7 +24,7 @@ class StorePage extends DefaultPage {
 	}
 
 	checkProductAddedToCart() {
-		this.page.waitForVisible(this.locators.food);
+		this.page.waitForText(this.locators.food);
 		const foodSign = this.page.getText(this.locators.food);
         const added = "Добавлено!";
 		assert.strictEqual(

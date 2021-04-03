@@ -7,7 +7,6 @@ class StoreSteps extends DefaultSteps {
 	}
 
 	order() {
-		this.open('https://grassnearhome.ru');
 		this.addToCart();
 	}
 

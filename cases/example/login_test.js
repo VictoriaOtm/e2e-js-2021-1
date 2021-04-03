@@ -1,6 +1,3 @@
-import account from '../../steps/account';
-import letters from '../../steps/letters/index';
-
 import gnhAccount from '../../steps/gnhAccount';
 import store from '../../steps/store';
 
