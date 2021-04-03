@@ -4,6 +4,7 @@ import page from '../../pages/profile';
 class ProfileSteps extends DefaultSteps {
     constructor() {
         super(page);
+        this.email = process.env.LOGIN;
     }
 
     goToProfile() {
@@ -11,7 +12,7 @@ class ProfileSteps extends DefaultSteps {
     }
 
     checkAuthorizedEmail () {
-        this.page.checkAuthorizedEmail(process.env.LOGIN);
+        this.page.checkAuthorizedEmail(this.email);
     }
 }
 
