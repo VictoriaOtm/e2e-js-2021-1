@@ -9,6 +9,7 @@ describe('test profile', () => {
 
 	it('Авторизоваться и открыть страницу с профилем', () => {
 		profile.openProfilePage();
+		profile.checkProfileEmailField();
 	});
 
 });

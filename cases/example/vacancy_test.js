@@ -2,15 +2,15 @@ import account from '../../steps/account';
 import vacancy from '../../steps/vacancy/index';
 
 
-// пример теста
 describe('test vacancy', () => {
 
     beforeEach(() => {
         account.auth();
     })
 
-    it('Авторизоваться и открыть страницу со списком вак', () => {
+    it('Авторизоваться, открыть страницу со списком ваканасий и перейти в 1ую вакансию', () => {
         vacancy.openVacancyPage();
+        vacancy.checkVacancyPageIsOpened();
     });
 
 });

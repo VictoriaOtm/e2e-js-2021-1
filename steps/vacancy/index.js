@@ -7,9 +7,11 @@ class VacancySteps extends DefaultSteps {
     }
 
     openVacancyPage() {
-        this.page.waitForContainer();
         this.page.clickVacancy();
         this.page.openFirst();
+    }
+
+    checkVacancyPageIsOpened() {
         this.page.checkVacancyOpened();
     }
 }

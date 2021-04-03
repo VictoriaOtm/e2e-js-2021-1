@@ -1,5 +1,5 @@
 import DefaultPage from '../default';
-import * as assert from "assert";
+import {strict as assert} from "assert";
 
 class ProfilePage extends DefaultPage {
 	constructor() {
@@ -8,7 +8,6 @@ class ProfilePage extends DefaultPage {
 
 	get locators () {
 		return {
-			container: this.container,
 			hrefToProfile: '.js-profile',
 			userEmailHeader: 'div[id="email"]',
 		}

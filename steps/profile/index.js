@@ -4,12 +4,15 @@ import page from '../../pages/profile';
 class ProfileSteps extends DefaultSteps {
 	constructor() {
 		super(page);
+		this.userLogin = process.env.LOGIN;
 	}
 
 	openProfilePage() {
-		this.page.waitForContainer();
 		this.page.clickProfile();
-		this.page.checkData(process.env.LOGIN);
+	}
+
+	checkProfileEmailField() {
+		this.page.checkData(this.userLogin);
 	}
 }
 
