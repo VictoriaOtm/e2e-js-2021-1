@@ -36,13 +36,7 @@ class DeskCreatePage extends DefaultPage {
     checkEmptyTitleError() {
         this.page.waitForVisible(this.locators.form);
         this.page.waitForVisible(this.locators.error);
-        const isError = $(this.locators.error).getAttribute('class').split(' ').includes('error_show');
-
-        assert.strictEqual(
-            isError,
-            true,
-            `Ожидалась ошибка (error_show=${true}), получено: ${isError}`,
-        )
+        return $(this.locators.error).getAttribute('class').split(' ').includes('error_show');
     }
 
 }

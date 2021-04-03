@@ -10,16 +10,17 @@ class DeskCreateSteps extends DefaultSteps {
     createFullEmptyDesk() {
         this.open(this.root + '/create-board');
         this.page.submit();
-        this.page.checkEmptyTitleError();
     }
 
     createDeskWithDescriptionOnly(description) {
         this.open(this.root + '/create-board');
         this.page.fillDescriptionForm(description);
         this.page.submit();
-        this.page.checkEmptyTitleError();
     }
 
+    checkEmptyTitleError() {
+        return this.page.checkEmptyTitleError();
+    }
 }
 
 export default new DeskCreateSteps();

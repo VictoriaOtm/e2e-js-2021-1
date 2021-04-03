@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {
@@ -40,16 +39,10 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.logoutLink);
 	}
 
-	checkAuthorized(rootURL, username) {
+	getAuthorized(rootURL) {
 		this.page.waitForVisible(this.locators.menu);
 		this.page.waitForVisible(this.locators.logoutLink);
-		const profileUsername = this.page.getAttribute(this.locators.profileLink, 'href').replace(rootURL, '').replace('/@', '');
-
-		assert.strictEqual(
-			profileUsername,
-			username,
-			`Авторизованный юзер ${profileUsername} не соответствует ожидаемому ${username}`,
-		)
+		return this.page.getAttribute(this.locators.profileLink, 'href').replace(rootURL, '').replace('/@', '');
 	}
 }
 
