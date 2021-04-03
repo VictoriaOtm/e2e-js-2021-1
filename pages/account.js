@@ -15,6 +15,7 @@ class AccountPage extends DefaultPage {
 			submitButton: 'button[class="name__button--2Ten8 name__buttons__marginForFilmCard--29k8-"]',
 			checkAutorizedNav: 'li[class="name__right_profile--3FtTW"]',
 			avatar: 'img[class="name__round--21Oxj"]',
+			loginButton:  '//button[text()="Войти"]',
 			profileLink: 'div#okno button',
 			logoutButton: 'button',
 			//settingLink: 'div#okno button[text()="Настройки"]',
@@ -40,6 +41,11 @@ class AccountPage extends DefaultPage {
 		this.page.setValue(this.locators.passwordOld, password);
 	}
 
+	fillChangePasswordForm(oldPassword, newPassword) {
+		this.fillPasswordForm(newPassword);
+		this.fillOldPasswordForm(oldPassword);
+	}
+
 
 	goToProfile () {
 		this.page.waitForVisible(this.locators.avatar);
@@ -61,9 +67,12 @@ class AccountPage extends DefaultPage {
         this.page.waitForVisible(this.locators.logoutButton);
     }
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		//this.page.click(this.locators.nextButton)
+	waitAuth() {
+		this.page.waitForVisible(this.locators.avatar);
+	}
+
+	waitLogout() {
+		this.page.waitForVisible(this.locators.loginButton);
 	}
 
 	submit() {

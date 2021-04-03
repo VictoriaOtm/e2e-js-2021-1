@@ -9,14 +9,6 @@ describe('test login', () => {
 	it('Авторизоваться', () => {
 		account.open('https://kino-park.online/login');
 		account.login();
-	});
-});
-
-describe('test change passwor', () => {
-	// используйте beforeEach хук для вызова account.auth(),
-	// если вы тестируете НЕ авторизацию
-
-	it('поменть пароль', () => {
-		account.changePassword();
+		account.checkProfile();
 	});
 });
