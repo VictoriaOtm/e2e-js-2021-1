@@ -6,6 +6,13 @@ class FolderSteps extends DefaultSteps {
 		super(page);
 	}
 
+    addFolder(folderName) {
+        this.page.clickOnCreateButton();
+        this.page.clickOnFolderButton();
+        this.page.fillFolderInput(folderName);
+        this.page.clickCreateFolder();
+    }
+
 	createFolder(folderName) {
         this.page.clickOnCreateButton();
         this.page.clickOnFolderButton();

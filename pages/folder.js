@@ -12,7 +12,7 @@ class FolderPage extends DefaultPage {
             createButton: 'div[data-name="create"]',
             folderButton: 'div[data-name="createFolder"]',
             folderInput: 'input[type="text"]',
-            createFolderButton: 'button[class="ui fluid primary button"]',
+            createFolderButton: 'div[class^="CreateNewFolderDialog__button"]',
             allFilesButton: 'div[data-name="/"]',
             moreButton: 'div[data-name="more"]',
             renameButton: 'div[data-name="rename"]',
