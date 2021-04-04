@@ -26,10 +26,8 @@ class MeetingChatPage extends DefaultPage {
         this.page.waitForVisible(this.locators.chatIcon);
         this.page.moveToObject(this.locators.chatIcon);
 
-        browser.pause(1500);
         this.page.waitForVisible(this.locators.openChatBtn);
         this.page.click(this.locators.openChatBtn);
-
     }
 
     enterMessage(msg) {
