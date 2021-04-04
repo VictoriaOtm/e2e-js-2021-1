@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class MeetingChatPage extends DefaultPage {
     constructor() {
@@ -37,30 +36,19 @@ class MeetingChatPage extends DefaultPage {
         this.page.waitForVisible(this.locators.chatMessageInput);
         this.page.click(this.locators.chatMessageInput);
         this.page.setValue(this.locators.chatMessageInput, msg);
-
     }
 
-    send(msg) {
+    sendEnteredMessage() {
         this.page.waitForVisible(this.locators.sendChatBtn);
         this.page.click(this.locators.sendChatBtn);
-        // this.page.waitForVisible(this.locators.authModal, 10000, true);
+    }
 
-        browser.refresh();
-
-        this.openChat();
-
+    getLastSentMessage() {
         const sentMessages = this.page.getText(this.locators.sentMsg)
-        const lastMsg = sentMessages[sentMessages.length - 1]
+        const lastSentMessageRow = sentMessages[sentMessages.length - 1]
 
-        const cutTo = lastMsg.indexOf('\n');
-        const sentMsg = lastMsg.slice(0, cutTo);
-
-
-        assert.strictEqual(
-            msg,
-            sentMsg,
-            `Последнее отправленное сообщение ${sentMsg} не соответствует ожидаемому ${msg}`,
-        )
+        const cutTo = lastSentMessageRow.indexOf('\n');
+        return lastSentMessageRow.slice(0, cutTo);
     }
 
 }

@@ -8,7 +8,6 @@ class AccountSteps extends DefaultSteps {
 
 	auth() {
 		this.open('https://onmeet.ru');
-		// this.waitForAccount();
 		this.login();
 	}
 
