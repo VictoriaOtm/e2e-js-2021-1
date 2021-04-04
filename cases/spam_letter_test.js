@@ -6,13 +6,7 @@ describe('Сценарий: Авторизация, открытие перво�
 		account.open('https://mailer.ru.com/signin');
 		account.login();
 
-		letters.waitForList();
-		letters.openLetter();
-
-		letters.toSpam();
-		letters.checkForm();
-		letters.clickToSpam();
-		letters.checkIfSpam();
+		letters.moveToSpam();
 
 		account.logout();
 	});

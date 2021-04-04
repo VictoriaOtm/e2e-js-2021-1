@@ -17,36 +17,21 @@ class LettersSteps extends DefaultSteps {
 		}
 	}
 
-	waitForList() {
+	openLetter () {
 		this.page.waitForContainer();
-	}
-
-	waitButton() {
+		this.page.clickLetter();
+		this.page.checkLetterOpened();
 		this.page.waitForButton(this.locators.notWritten);
-	}
-
-	clickButton() {
 		this.page.clickForButton(this.locators.notWritten);
 	}
 
-	toSpam() {
-		this.page.clickForSpam(this.locators.toSpam);
-	}
-
-	openLetter () {
+	moveToSpam() {
+		this.page.waitForContainer();
 		this.page.clickLetter();
 		this.page.checkLetterOpened();
-	}
-
-	checkForm() {
+		this.page.clickForSpam(this.locators.toSpam);
 		this.page.checkForForm(this.locators.formToSpam);
-	}
-
-	clickToSpam() {
 		this.page.clickForToSpam(this.locators.clickToSpam);
-	}
-
-	checkIfSpam() {
 		this.page.checkForIfSpam(this.locators.ifSpam);
 	}
 }
