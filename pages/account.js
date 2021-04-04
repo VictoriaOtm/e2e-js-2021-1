@@ -46,7 +46,7 @@ class AccountPage extends DefaultPage {
 	}
 
 	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
+		this.page.waitForText(this.locators.userEmailHeader);
 		const checkAuth = this.page.getText(this.locators.userEmailHeader);
 		assert.strictEqual(
 			checkAuth,

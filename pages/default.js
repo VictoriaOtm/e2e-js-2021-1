@@ -38,12 +38,6 @@ export default class DefaultPage {
 
 	checkForForm(path) {
 		this.page.waitForVisible(path);
-		const checkMenu = this.page.getText(path);
-		assert.strictEqual(
-			checkMenu[1],
-			'ДОБАВИТЬ',
-			`Попап не открылся`,
-		);
 	}
 
 	clickForToSpam(path) {
