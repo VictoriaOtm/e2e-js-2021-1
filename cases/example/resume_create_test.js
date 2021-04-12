@@ -19,16 +19,11 @@ describe('test create resume', () => {
 		resume.create(data);
 		const createdData = resume.getCreatedData();
 
-		assert.strictEqual(
-			createdData.place,
-			data.place,
-			`Описание с сайта ${createdData.place} не соответствует ожидаемому ${data.place}`,
-		)
-
-		assert.strictEqual(
-			createdData.description,
-			data.description,
-			`Описание с сайта ${createdData.description} не соответствует ожидаемому ${data.description}`,
-		)
+		assert.deepStrictEqual(createdData, {
+				description: data.description,
+				place: data.place,
+			},
+			`Описание с сайта ${createdData} не соответствует ожидаемому ${data}`,
+		);
 	});
 });
