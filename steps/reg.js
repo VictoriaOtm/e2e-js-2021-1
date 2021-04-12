@@ -18,11 +18,8 @@ class RegSteps extends DefaultSteps {
         this.page.fillPassword1Form(process.env.REG_PASSWORD);
         this.page.fillPassword2Form(process.env.REG_PASSWORD);
         this.page.submitForm();
-        //КОСТЫЛЬ
-        browser.pause(5000);
-        this.open("https://musicexpress.sarafa2n.ru/settings/");
-        browser.pause(5000);
-        this.page.checkReg(process.env.REG_EMAIL);
+        this.openWithDelay("https://musicexpress.sarafa2n.ru/settings/");
+        return this.page.getRegEmail();
     }
 
     waitForReg() {

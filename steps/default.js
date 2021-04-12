@@ -6,4 +6,10 @@ export default class DefaultSteps {
 	open(path) {
 		browser.url(path);
 	}
+	
+	openWithDelay(path) { //КОСТЫЛЬ
+		browser.pause(5000);
+		this.open(path);
+		browser.pause(5000);
+	}
 }

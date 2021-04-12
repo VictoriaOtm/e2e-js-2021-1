@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import {strict as assert} from "assert";
 
 class RegPage extends DefaultPage {
     constructor() {
@@ -47,13 +46,9 @@ class RegPage extends DefaultPage {
         this.page.click(this.locators.submitButton)
     }
 
-    checkReg(email) {
+    getRegEmail() {
         this.page.waitForValue(this.locators.emailField);
-        let settingsEmail = this.page.getValue(this.locators.emailField);
-        assert.strictEqual(
-            settingsEmail,
-            email,
-            `Email авторизованного юзера ${settingsEmail} не соответствует ожидаемому ${email}`)
+        return this.page.getValue(this.locators.emailField);
     }
 }
 
