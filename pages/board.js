@@ -9,18 +9,23 @@ class BoardPage extends DefaultPage {
         return {
             login: 'input[id="inputLogin"]',
             addFolderButton: '[data-test-id="create"]',
+            addFolderCancelButton: '[data-test-id="cancel"]',
             editFolderButton: '[data-test-id="folder-edit"]',
+            editFolderCancelButton: '[data-test-id="cancel"]',
         }
     }
 
     openAddFolderPopup() {
         this.page.waitForVisible(this.locators.addFolderButton);
         this.page.click(this.locators.addFolderButton);
+        this.page.click(this.locators.addFolderCancelButton);
     }
+    
 
     openEditFolderPopup() {
         this.page.waitForVisible(this.locators.editFolderButton);
         this.page.click(this.locators.editFolderButton);
+        this.page.click(this.locators.editFolderCancelButton);
     }
 }
 
