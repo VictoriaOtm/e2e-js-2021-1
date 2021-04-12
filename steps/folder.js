@@ -18,17 +18,17 @@ class FolderSteps extends DefaultSteps {
         this.page.clickOnFolderButton();
         this.page.fillFolderInput(folderName);
         this.page.clickCreateFolder();
-        this.page.checkNewFolder(folderName);
+        return this.page.getNewFolder(folderName);
 	}
 
-    renameFolder(folderName) {
+    renameFolder(folderName, newFolderName) {
         this.page.openAllFiles();
         this.page.clickOnFolder(folderName);
         this.page.clickOnMore();
         this.page.clickOnRename();
-        this.page.fillFolderInput(folderName+folderName);
+        this.page.fillFolderInput(newFolderName);
         this.page.clickConfirmButton()
-        this.page.checkNewFolder(folderName+folderName);
+        return this.page.getNewFolder(newFolderName);
     }
 
 	waitForAccount() {

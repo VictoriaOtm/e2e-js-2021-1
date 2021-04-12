@@ -1,6 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
-import folder from '../steps/folder';
 
 class FolderPage extends DefaultPage {
 	constructor() {
@@ -40,15 +38,10 @@ class FolderPage extends DefaultPage {
         this.page.click(this.locators.createFolderButton);
     }
 
-    checkNewFolder(folderName) {
+    getNewFolder(folderName) {
         const selector = 'div[data-name="/' + folderName + '"]';
         this.page.waitForVisible(selector);
-        const currentFolderName = this.page.getText(selector);
-        assert.strictEqual(
-			folderName,
-			currentFolderName,
-			`Ожидаем ${folderName}\nПолучаем ${currentFolderName}`,
-		)
+        return this.page.getText(selector);
     }
 
     openAllFiles() {
