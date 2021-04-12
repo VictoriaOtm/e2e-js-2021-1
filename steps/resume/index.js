@@ -10,17 +10,19 @@ class ResumeCreateSteps extends DefaultSteps {
         this.page.openCreatePage();
     }
 
-    create() {
-        this.page.fillTitleForm();
-        this.page.fillDescriptionForm();
-        this.page.fillPlaceForm();
-        this.page.fillSkillsForm();
+    create(data) {
+        this.page.fillTitleForm(data.title);
+        this.page.fillDescriptionForm(data.description);
+        this.page.fillPlaceForm(data.place);
+        this.page.fillSkillsForm(data.skills);
         this.page.submit();
     }
 
-    checkCreated () {
-        this.page.checkCreatedPlace();
-        this.page.checkCreatedDescription();
+    getCreatedData () {
+        return {
+            place: this.page.getCreatedPlace()[0],
+            description: this.page.getCreatedDescription()[0]
+        }
     }
 }
 
