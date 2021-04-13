@@ -9,6 +9,7 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	login() {
+		this.open('https://www.studhunt.ru/auth')
 		this.page.fillEmailForm(this.userEmail);
 		this.page.fillPasswdForm(this.userPassword);
 		this.page.submit();

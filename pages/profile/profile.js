@@ -1,5 +1,3 @@
-import {strict as assert} from "assert";
-
 class ProfilePage {
     constructor() {
         this.page = browser;
@@ -24,16 +22,11 @@ class ProfilePage {
         this.page.click(profileLinkSelector);
     }
 
-    checkEmailInProfile(email) {
+    getEmailFromProfile() {
         const userEmailSelector = this.locators.userEmail;
 
         this.page.waitForVisible(userEmailSelector, this.timeout); // Дожидаемся появления информации об email пользователя
-        const userEmail = this.page.getText(userEmailSelector);
-        assert.strictEqual(
-            userEmail,
-            email,
-            `Email авторизованного пользователя ${userEmail} не соответствует ожидаемому ${email}`,
-        )
+        return this.page.getText(userEmailSelector)
     }
 }
 

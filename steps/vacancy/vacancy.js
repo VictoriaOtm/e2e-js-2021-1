@@ -10,13 +10,13 @@ class ProfileSteps extends DefaultSteps {
         this.page.clickVacancyCreation();
     }
 
-    createEmpty() {
+    createEmptyErrors() {
         this.page.fillFormTitle();
-        this.page.checkEmptyVacancyError();
+        return this.page.getErrorsAfterEmptyVacancyCreation()
     }
 
-    createWithInvalidSalary() {
-        this.page.checkInvalidSalary();
+    createWithInvalidSalaryErrors() {
+        return this.page.getVacancyErrorsWithInvalidSalary();
     }
 }
 

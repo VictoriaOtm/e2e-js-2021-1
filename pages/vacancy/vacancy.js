@@ -30,7 +30,7 @@ class VacancyPage {
         this.page.setValue(vacancyTitleSelector, "some title"); // заполняем некоторые поля формы вакансии (заголовок)
     }
 
-    checkEmptyVacancyError() {
+    getErrorsAfterEmptyVacancyCreation() {
         const errorEmptyField = "Поле обязательно для заполнения.";
         const errorInvalidPhone = "Неверный номер телефона.";
         const expected = [
@@ -53,14 +53,13 @@ class VacancyPage {
         this.page.waitForVisible(errorsSubmitSelector);
         const errTextArray = this.page.getText(errorsSubmitSelector);
 
-        assert.deepStrictEqual(
-            errTextArray,
-            expected,
-            `Ошибки при создании незаполненной вакансии ${errTextArray} не соответствуют ожидаемым ${expected}`,
-        )
+        return {
+            expectedErrors: expected,
+            actualErrors: errTextArray
+        }
     }
 
-    checkInvalidSalary() {
+    getVacancyErrorsWithInvalidSalary() {
         const errorInvalidSalary = "Минимальная зарплата не может быть больше максимальной";
 
         const vacancySalaryMinSelector = this.locators.vacancySalaryMin;
@@ -75,11 +74,10 @@ class VacancyPage {
         this.page.waitForVisible(errorsSubmitSelector);
         const errTextArray = this.page.getText(errorsSubmitSelector);
 
-        assert.strictEqual(
-            errTextArray[5],
-            errorInvalidSalary,
-            `Ошибки при создании вакансии с зп мин > зп макс: ${errTextArray} не соответствуют ожидаемой ${errorInvalidSalary}`,
-        )
+        return {
+            expectedError: errorInvalidSalary,
+            actualError: errTextArray[5]
+        }
     }
 }
 
