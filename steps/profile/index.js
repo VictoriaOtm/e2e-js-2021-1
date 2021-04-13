@@ -11,17 +11,19 @@ class ProfileSteps extends DefaultSteps {
 		this.page.clickProfile();
 	}
 
-	checkLogin() {
-		this.page.checkProfileName(process.env.LOGIN);
+	getUsername() {
+		return this.page.getUsername();
 	}
 
-	editSkills() {
-		const testSkill = "Test skill";
+	editSkills(testSkill) {
 		this.page.clickEditSkills();
 		this.page.fillSkillsField(testSkill);
 		this.page.clickUpdateSkills();
 		this.page.waitForUpdateConfirmation();
-		this.page.checkSkillsField(testSkill);
+	}
+
+	getSkills() {
+		return this.page.getSkillsField()
 	}
 
 	wipeSkills() {

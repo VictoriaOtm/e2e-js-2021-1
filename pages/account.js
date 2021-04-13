@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {

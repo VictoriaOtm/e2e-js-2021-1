@@ -1,5 +1,4 @@
 import DefaultPage from '../default';
-import {strict as assert} from "assert";
 
 class ProfilePage extends DefaultPage {
 	constructor() {
@@ -51,24 +50,14 @@ class ProfilePage extends DefaultPage {
 		this.page.click(this.locators.closeButton);
 	}
 
-	checkSkillsField(text) {
+	getSkillsField() {
 		this.page.waitForVisible(this.locators.skills);
-		const skillsText = this.page.getText(this.locators.skills);
-		assert.strictEqual(
-			skillsText,
-			text,
-			`Текст поля "Навыки" ${skillsText} не соответствует ожидаемому ${text}`,
-		)
+		return this.page.getText(this.locators.skills);
 	}
 
-	checkProfileName(username) {
+	getUsername() {
 		this.page.waitForVisible(this.locators.profileName);
-		const profileName = this.page.getText(this.locators.profileName).toLowerCase();
-		assert.strictEqual(
-			profileName,
-			username,
-			`Имя авторизованного юзера ${profileName} не соответствует ожидаемому ${username}`,
-		)
+		return this.page.getText(this.locators.profileName).toLowerCase();
 	}
 }
 
