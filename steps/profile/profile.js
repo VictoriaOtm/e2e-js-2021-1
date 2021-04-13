@@ -11,8 +11,8 @@ class ProfileSteps extends DefaultSteps {
         this.page.goToProfile();
     }
 
-    checkEmail () {
-        this.page.checkEmail(this.email);
+    getProfileEmail() {
+        return this.page.getProfileEmail();
     }
 }
 

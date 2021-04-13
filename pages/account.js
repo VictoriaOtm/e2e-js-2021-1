@@ -32,8 +32,6 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.submitButton)
 	}
 
-	
-
 
 }
 

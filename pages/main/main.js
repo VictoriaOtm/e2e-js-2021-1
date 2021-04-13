@@ -1,5 +1,4 @@
 import DefaultPage from '../default';
-import { strict as assert } from 'assert';
 
 class MainPage extends DefaultPage {
 	constructor() {
@@ -32,15 +31,15 @@ class MainPage extends DefaultPage {
         this.page.click(this.locators.find);   
     }
 
-    checkVacancyTitles(){
+    getSearchData(){
+        return this.searchData
+    }
+
+    getVacancyTitles(){
         this.page.waitForVisible(this.locators.vacBody)
-        const titles = this.page.getText(this.locators.vacTitle) 
-        titles.forEach(element => (
-            assert.strictEqual(element.toLowerCase().includes(this.searchData.profession),
-            true,
-            `Профессия в  вакансии ${element} должна включать поисковую строку ${this.searchData.profession}`,
-            )
-        ))
+        return this.page.getText(this.locators.vacTitle).map(function(str) {
+			return str.toLowerCase();
+		  });
     }
 
 }

@@ -11,9 +11,14 @@ class MainSteps extends DefaultSteps {
         this.page.find();
     }
 
-    checkVacTitles(){
-        this.page.checkVacancyTitles();
+    getVacancyTitles(){
+        return this.page.getVacancyTitles();
     }
+
+    getSearchData(){
+        return this.page.getSearchData()
+    }
+    
 }
 
 export default new MainSteps();

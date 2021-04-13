@@ -1,6 +1,6 @@
 import profile from '../../steps/profile/profile';
 import account from '../../steps/account';
-
+import {strict as assert} from "assert";
 
 describe('test login', () => {
 
@@ -9,6 +9,11 @@ describe('test login', () => {
 		account.login();
 		
 		profile.goToProfile();
-		profile.checkEmail();
+		const profileEmail = profile.getProfileEmail();
+		assert.strictEqual(
+			profileEmail,
+			account.email,
+            `Email авторизованного юзера ${profileEmail} не соответствует ожидаемому ${account.email}`,
+        )
 	});
 });

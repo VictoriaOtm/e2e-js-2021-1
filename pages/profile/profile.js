@@ -1,5 +1,4 @@
 import DefaultPage from '../default';
-import {strict as assert} from "assert";
 
 class ProfilePage extends DefaultPage {
     constructor() {
@@ -18,15 +17,9 @@ class ProfilePage extends DefaultPage {
         this.page.click(this.locators.profileButton);
     }
 
-    checkEmail(email) {
+    getProfileEmail() {
         this.page.waitForVisible(this.locators.userEmailHeader);
-        const profileEmail = this.page.getText(this.locators.userEmailHeader);
-
-        assert.strictEqual(
-            profileEmail,
-            email,
-            `Email авторизованного юзера ${profileEmail} не соответствует ожидаемому ${email}`,
-        )
+        return this.page.getText(this.locators.userEmailHeader);
     }
 }
 

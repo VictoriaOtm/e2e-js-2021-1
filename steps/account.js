@@ -19,9 +19,6 @@ class AccountSteps extends DefaultSteps {
 		this.page.fillPasswordForm(this.password);
 		this.page.submit();
 	}
-	checkEmail(){
-		this.page.checkEmail(this.email);
-	}
 
 	waitForAccount() {
 		this.page.waitForContainer();
