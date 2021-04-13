@@ -18,14 +18,9 @@ class ProfilePage extends DefaultPage {
 		this.page.click(this.locators.hrefToProfile);
 	}
 
-	checkData (email) {
+	checkData () {
 		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
+		return this.page.getText(this.locators.userEmailHeader);
 	}
 }
 

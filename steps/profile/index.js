@@ -1,5 +1,6 @@
 import DefaultSteps from '../default';
 import page from '../../pages/profile';
+import {strict as assert} from "assert";
 
 class ProfileSteps extends DefaultSteps {
 	constructor() {
@@ -12,7 +13,12 @@ class ProfileSteps extends DefaultSteps {
 	}
 
 	checkProfileEmailField() {
-		this.page.checkData(this.userLogin);
+		const headerEmail = this.page.checkData(this.userLogin);
+		assert.strictEqual(
+			headerEmail,
+			this.userLogin,
+			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${this.userLogin}`,
+		)
 	}
 }
 

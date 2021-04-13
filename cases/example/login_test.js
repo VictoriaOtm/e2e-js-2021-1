@@ -3,11 +3,8 @@ import profile from '../../steps/profile/index';
 
 describe('test profile', () => {
 
-	beforeEach(() => {
-		account.auth();
-	})
-
 	it('Авторизоваться и открыть страницу с профилем', () => {
+		account.auth();
 		profile.openProfilePage();
 		profile.checkProfileEmailField();
 	});
