@@ -1,5 +1,6 @@
 import DefaultSteps from './default';
 import page from '../pages/search';
+import {strict as assert} from "assert";
 
 class SearchSteps extends DefaultSteps {
     constructor() {
@@ -8,7 +9,12 @@ class SearchSteps extends DefaultSteps {
 
     checkArtistQuery(query) {
         this.page.fillSearchInput(query);
-        this.page.checkQueryIncorrect();
+        let message = this.page.getQueryMessage();
+        assert.strictEqual(
+            message,
+            this.page.incorrectQueryText,
+            `Сообщение "${message}" не соответствует ожидаемому "${this.page.incorrectQueryText}"`,
+        )
     }
 }
 

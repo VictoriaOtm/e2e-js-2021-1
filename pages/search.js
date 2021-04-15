@@ -22,19 +22,14 @@ class AccountPage extends DefaultPage {
         this.page.setValue(this.locators.queryInput, query);
     }
 
-    checkQueryIncorrect() {
+    getQueryMessage() {
         this.page.waitForText(this.locators.searchPageText);
         this.page.waitUntil(() => this.page.getText(this.locators.searchPageText) === this.incorrectQueryText,
             {
                 timeout: 3000,
                 timeoutMsg: 'Текст не меняется спустя 3 секунд.'
             })
-        let messageText = this.page.getText(this.locators.searchPageText);
-        assert.strictEqual(
-            messageText,
-            this.incorrectQueryText,
-            `Сообщение "${messageText}" не соответствует ожидаемому "${this.incorrectQueryText}"`,
-        )
+        return this.page.getText(this.locators.searchPageText);
     }
 }
 

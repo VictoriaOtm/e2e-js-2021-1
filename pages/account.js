@@ -33,14 +33,9 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.submitButton)
 	}
 
-	checkAuthorizedEmail(email) {
+	getSettingsEmail(email) {
 		this.page.waitForValue(this.locators.emailField);
-		let settingsEmail = this.page.getValue(this.locators.emailField);
-			assert.strictEqual(
-			settingsEmail,
-			email,
-			`Email авторизованного юзера ${settingsEmail} не соответствует ожидаемому ${email}`,
-		)
+		return this.page.getValue(this.locators.emailField);
 	}
 }
 
