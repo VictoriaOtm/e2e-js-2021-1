@@ -44,11 +44,7 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.profileButton);
 		this.page.waitForVisible(this.locators.loginText);
 		const text = this.page.getText(this.locators.loginText);
-		 assert.strictEqual(
-		 	login,
-		 	text,
-		 	`Email авторизованного юзера ${text} не соответствует ожидаемому ${login}`,
-		 )
+		return text;
 	}
 
 	logout() {

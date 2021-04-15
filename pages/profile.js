@@ -26,11 +26,7 @@ class PlaylistPage extends DefaultPage {
     check(name) {
         this.page.waitForVisible(this.locators.nameOfPlaylist);
         const text = this.page.getText(this.locators.nameOfPlaylist);
-        assert.strictEqual(
-            name,
-            text[0],
-            `Название плэйлиста не совпадает с ожидаемым`,
-        )
+        return text[0]
     }
 }
 

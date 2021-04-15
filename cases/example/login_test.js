@@ -1,5 +1,6 @@
 import account from '../../steps/account';
 import profile from "../../pages/profile";
+import {strict as assert} from "assert";
 
 // пример теста
 describe('test id', () => {
