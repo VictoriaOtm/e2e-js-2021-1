@@ -18,7 +18,9 @@ describe('test email', () => {
 
         mail.closeSubmit(); //Закрываем добавление
 
-        mail.deleteEmail(); //Удаляем почту и проверяем
+        mail.deleteEmail(); //Удаляем почту
+
+        mail.checkDeleting(); //проверяем
 
     });
 

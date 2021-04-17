@@ -13,20 +13,14 @@ describe('test email', () => {
 
         mail.openWindow(); // Открываем окно для ввода почты
 
-        mail.addNewEmail(); //Добавляем почту и проверяем
+        mail.addNewEmail(); //Добавляем почту
+
+        mail.checkAdding(); // проверяем
 
         mail.closeSubmit(); //Закрываем добавление
 
         mail.deleteEmail(); // чистим окружение, удаляем созданную почту
 
     });
-
-
-    // it('Удаление резервной почты', () => {
-    //     mail.openPage();// Открываем страницу
-    //
-    //     mail.deleteEmail(); //Удаляем почту и проверяем
-    //
-    // });
 
 });

@@ -1,7 +1,9 @@
 import DefaultSteps from "./default";
 import {foldersHref} from './../store/index';
 import page from '../pages/mail';
+import assert from "assert";
 
+const testEmail = 'sheb70017@gmail.com';
 
 class MailStep extends DefaultSteps {
     constructor() {
@@ -19,7 +21,25 @@ class MailStep extends DefaultSteps {
    addNewEmail() {
        this.page.inputEmail();
        this.page.submit();
-       this.page.checkNewEmail();
+       // this.page.checkNewEmail();
+   }
+
+   checkDeleting() {
+       const headerEmail = this.page.checkDeletedEmail();
+       assert.strictEqual(
+           headerEmail,
+           testEmail,
+           `Удаленный Email ${headerEmail} не соответствует ожидаемому ${testEmail}`,
+       )
+   }
+
+   checkAdding() {
+       const headerEmail = this.page.checkNewEmail();
+       assert.strictEqual(
+           headerEmail,
+           testEmail,
+           `Новый Email ${headerEmail} не соответствует ожидаемому ${testEmail}`,
+       )
    }
 
    closeSubmit() {
@@ -29,7 +49,7 @@ class MailStep extends DefaultSteps {
    deleteEmail() {
         this.page.deleteEmail();
         this.page.submitDeleting();
-        this.page.checkDeletedEmail();
+        // this.page.checkDeletedEmail();
    }
 }
 
