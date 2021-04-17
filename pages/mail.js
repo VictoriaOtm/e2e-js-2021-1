@@ -24,6 +24,7 @@ class MailPage extends DefaultPage {
             checkEmail: '[data-test-id="recovery-email-wrapper"]',
             deleteButton: '[data-test-id="recovery-delete-email-button"]',
             submitDeleteButton: '[data-test-id="recovery-deleteEmail-submit"]',
+            closeDeleteButton: '[data-test-id="recovery-success-close"]',
         }
     }
 
@@ -61,6 +62,16 @@ class MailPage extends DefaultPage {
     submitDeleting() {
         this.page.waitForVisible(this.locators.submitDeleteButton);
         this.page.click(this.locators.submitDeleteButton);
+    }
+
+    closeAdding() {
+        this.page.waitForVisible(this.locators.closeDeleteButton);
+        this.page.click(this.locators.closeDeleteButton);
+    }
+
+    closeDeleting() {
+        this.page.waitForVisible(this.locators.closeDeleteButton);
+        this.page.click(this.locators.closeDeleteButton);
     }
 
     checkDeletedEmail() {

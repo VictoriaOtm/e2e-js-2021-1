@@ -22,6 +22,10 @@ class MailStep extends DefaultSteps {
        this.page.checkNewEmail();
    }
 
+   closeSubmit() {
+        this.page.closeAdding();
+   }
+
    deleteEmail() {
         this.page.deleteEmail();
         this.page.submitDeleting();
