@@ -47,11 +47,6 @@ class MailPage extends DefaultPage {
     checkNewEmail() {
         this.page.waitForVisible(this.locators.checkEmail);
         return this.page.getText(this.locators.checkEmail);
-        // assert.strictEqual(
-        //     headerEmail,
-        //     testEmail,
-        //     `Новый Email ${headerEmail} не соответствует ожидаемому ${testEmail}`,
-        // )
     }
 
     deleteEmail() {
@@ -77,11 +72,6 @@ class MailPage extends DefaultPage {
     checkDeletedEmail() {
         this.page.waitForVisible(this.locators.checkEmail);
         return this.page.getText(this.locators.checkEmail);
-        // assert.strictEqual(
-        //     headerEmail,
-        //     testEmail,
-        //     `Удаленный Email ${headerEmail} не соответствует ожидаемому ${testEmail}`,
-        // )
     }
 }
 

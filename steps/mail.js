@@ -49,7 +49,6 @@ class MailStep extends DefaultSteps {
    deleteEmail() {
         this.page.deleteEmail();
         this.page.submitDeleting();
-        // this.page.checkDeletedEmail();
    }
 }
 
