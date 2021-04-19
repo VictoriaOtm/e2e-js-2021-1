@@ -1,5 +1,6 @@
 import DefaultSteps from '../default';
 import page from '../../pages/letters';
+import {strict as assert} from "assert";
 
 class LettersSteps extends DefaultSteps {
 	constructor() {
@@ -32,7 +33,12 @@ class LettersSteps extends DefaultSteps {
 		this.page.clickForSpam(this.locators.toSpam);
 		this.page.checkForForm(this.locators.formToSpam);
 		this.page.clickForToSpam(this.locators.clickToSpam);
-		this.page.checkForIfSpam(this.locators.ifSpam);
+		const check = this.page.checkForIfSpam(this.locators.ifSpam);
+		assert.strictEqual(
+			check,
+			'',
+			`Письмо не ушло в спам`,
+		);
 	}
 }
 

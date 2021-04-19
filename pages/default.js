@@ -46,12 +46,7 @@ export default class DefaultPage {
 
 	checkForIfSpam(path) {
 		this.page.waitForVisible(path);
-		const check = this.page.getText(path);
-		assert.strictEqual(
-			check,
-			'',
-			`Письмо не ушло в спам`,
-		);
+		return this.page.getText(path);
 	}
 
 	waitForUrl(value, timeout, revert) {
