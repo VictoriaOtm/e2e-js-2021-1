@@ -9,6 +9,11 @@ class ConverterSteps extends DefaultSteps {
     openConverter() {
         this.page.clickOnConverter();
     }
+
+    fillConverterFirstField(val) {
+        this.page.fillFirstField(val)
+        return this.page.getFirstFieldValue()
+    }
 }
 
 export default new ConverterSteps();
