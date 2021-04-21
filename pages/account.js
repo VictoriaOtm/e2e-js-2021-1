@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
     constructor() {
@@ -35,12 +34,7 @@ class AccountPage extends DefaultPage {
         this.page.waitForVisible(this.locators.profileLink);
         this.page.click(this.locators.profileLink);
         this.page.waitForVisible(this.locators.profileName);
-        const profileName = this.page.getText(this.locators.profileName).toLowerCase();
-        assert.strictEqual(
-            profileName,
-            username,
-            `Имя авторизованного юзера ${profileName} не соответствует ожидаемому ${username}`,
-        )
+        return this.page.getText(this.locators.profileName).toLowerCase();
     }
 
     submit() {

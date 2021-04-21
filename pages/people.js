@@ -31,10 +31,8 @@ class PeoplePage extends DefaultPage {
 	}
 
 	checkFavoritesOpened () {
-        const expected = "К сожалению ничего не нашлось :(";
 		this.page.waitForVisible(this.locators.letterBody);
-		const text = this.page.getText(this.locators.letterBody);
-		assert.strictEqual(text, expected, "Должна была вывестись надпись: К сожалению ничего не нашлось :(");
+		return this.page.getText(this.locators.letterBody);
 	}
 }
 

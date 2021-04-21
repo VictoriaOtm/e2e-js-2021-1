@@ -1,5 +1,6 @@
 import DefaultSteps from './default';
 import page from '../pages/people';
+import { strict as assert } from 'assert';
 
 class PeopleSteps extends DefaultSteps {
 	constructor() {
@@ -7,8 +8,11 @@ class PeopleSteps extends DefaultSteps {
 	}
 
 	openFavorites() {
+		const expected = "К сожалению ничего не нашлось :(";
 		this.page.clickFavorites();
-		this.page.checkFavoritesOpened();
+		const received = this.page.checkFavoritesOpened();
+
+		assert.strictEqual(received, expected, `Должна была вывестись надпись: ${expected}`);
 	}
 
     clickToUser() {

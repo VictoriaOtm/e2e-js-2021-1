@@ -1,5 +1,6 @@
 import DefaultSteps from './default';
 import page from '../pages/account';
+import { strict as assert } from 'assert';
 
 class AccountSteps extends DefaultSteps {
 	constructor() {
@@ -15,7 +16,13 @@ class AccountSteps extends DefaultSteps {
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN, process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedProfile(process.env.LOGIN);
+		const profileName = this.page.checkAuthorizedProfile(process.env.LOGIN);
+
+		assert.strictEqual(
+            profileName,
+            process.env.LOGIN,
+            `Имя авторизованного юзера ${profileName} не соответствует ожидаемому ${process.env.LOGIN}`,
+        )
 	}
 
 	waitForAccount() {
