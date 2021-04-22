@@ -54,13 +54,6 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.profileLink);
 	}
 
-	// goToSettings () {
-	// 	this.page.waitForVisible(this.locators.avatar);
-	// 	this.page.click(this.locators.avatar);
-	// 	this.page.waitForVisible(this.locators.settingLink);
-	// 	this.page.click(this.locators.settingLink);
-	// }
-
 	logout() {
         this.page.waitForVisible(this.locators.logoutButton);
         this.page.click(this.locators.logoutButton);
@@ -83,11 +76,7 @@ class AccountPage extends DefaultPage {
 	checkAuthorized(username) {
 		this.page.waitForVisible(this.locators.nickname);
         const nickname = this.page.getText(this.locators.nickname);
-		assert.strictEqual(
-			nickname,
-			username,
-			`Email авторизованного юзера ${nickname} не соответствует ожидаемому ${username}`,
-		)
+		return nickname
 	}
 }
 

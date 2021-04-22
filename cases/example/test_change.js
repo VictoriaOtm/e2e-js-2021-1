@@ -10,13 +10,8 @@ describe('test change password', () => {
         account.auth();
         account.open('https://kino-park.online/profileChange');
         const oldPass = process.env.PASSWORD;
-        const newPass = "testtest";
+        const newPass = process.env.NEW_PASSWORD;
 		account.changePassword(oldPass, newPass);
         account.logout();
-        process.env.PASSWORD = newPass;
-        account.auth();
-        account.open('https://kino-park.online/profileChange');
-        account.changePassword(newPass, oldPass);
-        process.env.PASSWORD = oldPass;
 	});
 });
