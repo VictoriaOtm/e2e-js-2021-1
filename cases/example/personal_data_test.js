@@ -11,6 +11,6 @@ describe('test id.mail.ru раздел личные данные', () => {
     it('Перейти по ссылке "Настройки личных данных" и ввести имя длиннее 40 символов.', () => {
         personalData.waitForPersonalDataLink();
         personalData.openPersonalData();
-        personalData.editFirstName();
+        personalData.editFirstName('ХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХАХА');
     });
 });

@@ -35,14 +35,8 @@ class PersonalDataPage extends DefaultPage {
         this.page.click(this.locators.submitButton);
     }
 
-    checkErrorMessage(error) {
+    checkErrorMessage() {
         this.page.waitForVisible(this.locators.errorText);
-        const errorText = this.page.getText(this.locators.errorText);
-        assert.strictEqual(
-            errorText,
-            error,
-            `Ошибка валидации ${errorText} не соответстсвует ожидаемой ${error}`
-        );
     }
 }
 
