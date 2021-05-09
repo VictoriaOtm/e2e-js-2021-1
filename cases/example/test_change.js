@@ -13,5 +13,8 @@ describe('test change password', () => {
         const newPass = process.env.NEW_PASSWORD;
 		account.changePassword(oldPass, newPass);
         account.logout();
+        process.env.PASSWORD = newPass;
+        account.auth();
+        account.checkProfile();
 	});
 });

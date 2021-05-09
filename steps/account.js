@@ -11,6 +11,7 @@ class AccountSteps extends DefaultSteps {
 		this.page.waitLogout();
 		this.open('https://kino-park.online/login');
 		this.waitForAccount();
+		console.log(process.env.PASSWORD)
 		this.login();
 		this.page.waitAuth();
 	}
