@@ -9,7 +9,6 @@ class AccountPage extends DefaultPage {
 		return {
 			email: 'input[name="email"]',
 			password: 'input[name="password"]',
-			// nextButton: 'button[class="custom-form__submit"]',
 			submitButton: 'button[class="custom-form__submit"]',
 			userNickname: 'div[class="nickname__text"]',
 		}
