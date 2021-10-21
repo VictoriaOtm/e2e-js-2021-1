@@ -2,7 +2,7 @@ import DefaultPage from '../default';
 
 class LettersPage extends DefaultPage {
 	constructor() {
-		super('letters', '.dataset-letters')
+		super('letters', '.dataset-letters');
 	}
 
 	get locators () {
