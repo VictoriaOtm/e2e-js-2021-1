@@ -1,3 +1,5 @@
+##ЗАПУСК
+LOGIN=<> PASSWORD=<> NAME=<> SURNAME=<> npm test
 
 > Репозиторий для UI-тестов на js с использованием библиотеки Webdriverio v4
 

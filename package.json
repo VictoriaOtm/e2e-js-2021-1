@@ -4,7 +4,7 @@
   "description": "e2e tests for octavius",
   "main": "index.js",
   "scripts": {
-    "test": "wdio --baseUrl='https://e.mail.ru'",
+    "test": "wdio --baseUrl='https://ykoya.ru'",
     "report": "mkdir -p ./cache/allure-report && allure generate -c -o ./cache/allure-report ./cache/allure-results && allure open ./cache/allure-report"
   },
   "author": "",
@@ -20,7 +20,7 @@
     "wdio-mocha-framework": "0.6.3",
     "wdio-selenium-standalone-service": "0.0.10",
     "wdio-spec-reporter": "0.1.5",
-    "webdriverio": "4.13.2"
+    "webdriverio": "^4.13.2"
   },
   "dependencies": {
     "chromedriver": "2.43.1",
