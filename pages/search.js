@@ -47,4 +47,4 @@ class SearchPage extends DefaultPage {
     }
 }
 
-export default new SearchPage()
+export default new SearchPage();

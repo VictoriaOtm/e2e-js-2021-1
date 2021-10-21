@@ -11,16 +11,8 @@ describe('test search', () => {
     it('Тест на работу поиска', () => {
         const {received, expected} = search.findMe();
 
-        let findLogin = '';
-
-        for (let item of received) {
-            if (item === expected) {
-                findLogin = item;
-            }
-        }
-
         assert.strictEqual(
-            findLogin,
+            received,
             expected,
             `Результат поиска не содержит вашего профиля с логином ${expected}`,
         )
