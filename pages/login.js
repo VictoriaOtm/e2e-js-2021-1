@@ -3,7 +3,7 @@ import { strict as assert } from 'assert';
 
 class LoginPage extends DefaultPage {
 	constructor() {
-		super('account', '[data-test-id=login-app-read]')
+		super('account', '[class="auth-page login-page"]')
 	}
 
 	get locators() {
@@ -11,7 +11,7 @@ class LoginPage extends DefaultPage {
 			login: 'input[name="username"]',
 			password: 'input[name="password"]',
 			submitButton: 'input[value="Login"]',
-			usernameField: 'span[class="profile-info__username"]'
+			username: 'span[class="profile-info__username"]'
 		}
 	}
 
@@ -33,8 +33,8 @@ class LoginPage extends DefaultPage {
 	}
 
 	checkProfileLoaded(username) {
-		this.page.waitForVisible(this.locators.usernameField);
-		const actualUsername = this.page.getText(this.locators.usernameField);
+		this.page.waitForVisible(this.locators.username);
+		const actualUsername = this.page.getText(this.locators.username);
 		assert.strictEqual(
 			username,
 			actualUsername,

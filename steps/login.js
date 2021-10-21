@@ -1,5 +1,5 @@
 import DefaultSteps from './default';
-import page from '../pages/account';
+import page from '../pages/login';
 
 class LoginSteps extends DefaultSteps {
 	constructor() {
@@ -8,7 +8,7 @@ class LoginSteps extends DefaultSteps {
 
 	auth() {
 		this.open('https://pinterbest.ru/login');
-		this.waitForAccount();
+		this.waitForLoginPage();
 		this.login();
 	}
 
@@ -19,7 +19,7 @@ class LoginSteps extends DefaultSteps {
 		this.page.checkProfileLoaded(process.env.LOGIN);
 	}
 
-	waitForAccount() {
+	waitForLoginPage() {
 		this.page.waitForContainer();
 	}
 }
