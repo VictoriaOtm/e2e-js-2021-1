@@ -1,7 +1,7 @@
 import DefaultPage from './default';
 import { strict as assert } from 'assert';
 
-class AccountPage extends DefaultPage {
+class LoginPage extends DefaultPage {
 	constructor() {
 		super('account', '[data-test-id=login-app-read]')
 	}
@@ -10,9 +10,8 @@ class AccountPage extends DefaultPage {
 		return {
 			login: 'input[name="username"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
+			submitButton: 'input[value="Login"]',
+			usernameField: 'span[class="profile-info__username"]'
 		}
 	}
 
@@ -28,25 +27,20 @@ class AccountPage extends DefaultPage {
 		this.page.setValue(this.locators.password, password);
 	}
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
-
 	submit() {
 		this.page.waitForVisible(this.locators.submitButton);
 		this.page.click(this.locators.submitButton)
 	}
 
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
+	checkProfileLoaded(username) {
+		this.page.waitForVisible(this.locators.usernameField);
+		const actualUsername = this.page.getText(this.locators.usernameField);
 		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
+			username,
+			actualUsername,
+			`Username авторизованного юзера ${actualUsername} не соответствует ожидаемому ${username}`,
 		)
 	}
 }
 
-export default new AccountPage();
+export default new LoginPage();

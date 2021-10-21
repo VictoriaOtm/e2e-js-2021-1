@@ -1,23 +1,22 @@
 import DefaultSteps from './default';
 import page from '../pages/account';
 
-class AccountSteps extends DefaultSteps {
+class LoginSteps extends DefaultSteps {
 	constructor() {
 		super(page);
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open('https://pinterbest.ru/login');
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+		this.page.checkProfileLoaded(process.env.LOGIN);
 	}
 
 	waitForAccount() {
@@ -25,4 +24,4 @@ class AccountSteps extends DefaultSteps {
 	}
 }
 
-export default new AccountSteps();
+export default new LoginSteps();
