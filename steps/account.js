@@ -7,17 +7,14 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open('/');
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
-		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
-		this.page.fillPasswordForm(process.env.PASSWORD);
-		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+		this.page.fillLoginForm(process.env.LOGIN, process.env.PASSWORD);
+		this.page.checkAuthorized();
 	}
 
 	waitForAccount() {
