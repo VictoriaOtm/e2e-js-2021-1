@@ -1,5 +1,5 @@
-import account from "../../steps/account";
-import search from "../../steps/search";
+import account from "../steps/account";
+import search from "../steps/search";
 import assert from "assert";
 
 describe('test search', () => {

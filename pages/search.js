@@ -1,12 +1,10 @@
-import DefaultPage from "../default";
+import DefaultPage from "./default";
 
 class SearchPage extends DefaultPage {
-    // OK
     constructor() {
         super('search', '#search__form');
     }
 
-    // OK
     get locators() {
         return {
             searchInput: '#search',
@@ -14,33 +12,35 @@ class SearchPage extends DefaultPage {
             submitButton: '.search__form_submit',
             filters: {
                 findFor: '[name=what]',
+                findForDropdown: {
+                    onlyUsers: "[data-id='43']",
+                },
             }
         };
     }
 
     get filters () {
         return {
-            fillSearchFor: (data) => {
+            fillSearchFor: () => {
                 this.page.waitForVisible(this.locators.filters.findFor);
-                this.page.setValue(this.locators.filters.findFor, data);
+                this.page.click(this.locators.filters.findFor);
+                this.page.waitForVisible(this.locators.filters.findForDropdown.onlyUsers);
+                this.page.click(this.locators.filters.findForDropdown.onlyUsers);
             }
         }
     }
 
-    // OK
     fillSearchInput(data) {
         this.page.waitForVisible(this.locators.searchInput);
         this.page.click(this.locators.searchInput);
         this.page.setValue(this.locators.searchInput, data);
     }
 
-    // OK
     submit() {
         this.page.waitForVisible(this.locators.submitButton);
         this.page.click(this.locators.submitButton)
     }
 
-    // OK
     checkFindMe() {
         this.page.waitForVisible(this.locators.loginHeader);
         return this.page.getText(this.locators.loginHeader);

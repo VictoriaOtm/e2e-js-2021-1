@@ -1,25 +1,26 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {
-		super('account', '[data-test-id=login-app-read]')
+		super('account', '#login__window')
 	}
 
 	get locators() {
 		return {
-			login: 'input[name="username"]',
+			email: 'input[name="email"]',
 			password: 'input[name="password"]',
-			nextButton: '[data-test-id="next-button"]',
-			submitButton: '[data-test-id="submit-button"]',
-			userEmailHeader: '#PH_user-email',
+			submitButton: '.custom-form__submit',
+			userLoginHeader: '.nickname__text',
+			exitButton: '.exit-buttion__text',
+			error404: '.page404__title',
+			cookieAuth: 'sessionID',
 		}
 	}
 
-	fillLoginForm (username) {
-		this.page.waitForVisible(this.locators.login);
-		this.page.click(this.locators.login);
-		this.page.setValue(this.locators.login, username);
+	fillEmailForm (email) {
+		this.page.waitForVisible(this.locators.email);
+		this.page.click(this.locators.email);
+		this.page.setValue(this.locators.email, email);
 	}
 
 	fillPasswordForm (password) {
@@ -28,24 +29,23 @@ class AccountPage extends DefaultPage {
 		this.page.setValue(this.locators.password, password);
 	}
 
-	next() {
-		this.page.waitForVisible(this.locators.nextButton);
-		this.page.click(this.locators.nextButton)
-	}
-
 	submit() {
 		this.page.waitForVisible(this.locators.submitButton);
 		this.page.click(this.locators.submitButton)
 	}
 
-	checkAuthorizedEmail(email) {
-		this.page.waitForVisible(this.locators.userEmailHeader);
-		const headerEmail = this.page.getText(this.locators.userEmailHeader);
-		assert.strictEqual(
-			headerEmail,
-			email,
-			`Email авторизованного юзера ${headerEmail} не соответствует ожидаемому ${email}`,
-		)
+	checkAuthorizedLogin() {
+		this.page.waitForVisible(this.locators.userLoginHeader);
+		return this.page.getText(this.locators.userLoginHeader);
+	}
+
+	clickOnExit() {
+		this.page.waitForVisible(this.locators.exitButton);
+		this.page.click(this.locators.exitButton);
+	}
+
+	checkLogout() {
+		return this.page.getCookie(this.locators.cookieAuth);
 	}
 }
 
