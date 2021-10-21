@@ -1,5 +1,4 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class AccountPage extends DefaultPage {
 	constructor() {
@@ -27,11 +26,6 @@ class AccountPage extends DefaultPage {
 		this.page.click(this.locators.password);
 		this.page.setValue(this.locators.password, password);
 	}
-
-	// next() {
-	// 	this.page.waitForVisible(this.locators.nextButton);
-	// 	this.page.click(this.locators.nextButton)
-	// }
 
 	submit() {
 		this.page.waitForVisible(this.locators.submitButton);
