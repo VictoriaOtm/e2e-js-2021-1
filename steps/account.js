@@ -16,6 +16,7 @@ class AccountSteps extends DefaultSteps {
 	waitForAccount() {
 		account.waitForContainer();
 	}
+
 	checkOpened() {
 		assert.strictEqual(account.popUpExist(), `Вход`, 'Поп-ап не появился')
 	}
