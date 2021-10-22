@@ -8,12 +8,12 @@ class Product extends DefaultPage {
 
     get locators() {
         return {
-            product: '.product-card__like',
+            productLike: '.product-card__like',
         }
     }
 
     clickLike() {
-        this.page.click(this.locators.product);
+        this.page.click(this.locators.productLike);
     }
 
 }

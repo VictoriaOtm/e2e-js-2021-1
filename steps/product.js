@@ -1,14 +1,13 @@
 import DefaultSteps from './default';
 import product from '../pages/product';
-import {strict as assert} from "assert";
 
 class ProductSteps extends DefaultSteps {
     constructor() {
-        super();
+        super(product);
     }
 
     likeProduct() {
-        product.clickLike();
+        this.page.clickLike();
     }
 
     waitForProduct() {

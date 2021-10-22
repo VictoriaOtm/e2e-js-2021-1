@@ -1,9 +1,9 @@
 import DefaultPage from './default';
 
 
-class Nav_bar extends DefaultPage {
+class NavBar extends DefaultPage {
     constructor() {
-        super('Nav_bar', '.header-inner')
+        super('NavBar', '.header-inner')
     }
 
     get locators() {
@@ -30,4 +30,4 @@ class Nav_bar extends DefaultPage {
     }
 }
 
-export default new Nav_bar();
+export default new NavBar();

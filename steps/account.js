@@ -4,17 +4,17 @@ import {strict as assert} from "assert";
 
 class AccountSteps extends DefaultSteps {
 	constructor() {
-		super();
+		super(account);
 	}
 
 	login() {
-		account.fillLoginForm(process.env.LOGIN);
-		account.fillPasswordForm(process.env.PASSWORD);
-		account.submit();
+		this.page.fillLoginForm(process.env.LOGIN);
+		this.page.fillPasswordForm(process.env.PASSWORD);
+		this.page.submit();
 	}
 
 	waitForAccount() {
-		account.waitForContainer();
+		this.page.waitForContainer();
 	}
 
 	checkOpened() {
