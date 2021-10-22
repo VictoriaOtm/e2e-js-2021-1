@@ -78,5 +78,4 @@ export default class DefaultPage {
 
 		return actual.includes(name);
 	}
-
 }
