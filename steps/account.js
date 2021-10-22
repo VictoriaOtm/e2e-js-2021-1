@@ -6,12 +6,6 @@ class AccountSteps extends DefaultSteps {
         super(page);
     }
 
-    auth() {
-        this.open('https://redioteka.com/login');
-        this.waitForAccount();
-        this.login();
-    }
-
     waitForAccount() {
         this.page.waitForContainer();
     }
