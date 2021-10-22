@@ -1,15 +1,15 @@
 import login from '../steps/login';
 import profile from '../steps/profile'
 
-beforeEach(() => {
-	login.auth();
-})
-
-afterEach(() => {
-	profile.logout();
-})
-
 describe('profile testing', () => {
+	beforeEach(() => {
+		login.auth();
+	})
+
+	afterEach(() => {
+		profile.logout();
+	})
+
 	it('check if login shows in profile', () => {
 		profile.open('https://pinterbest.ru/profile');
 		profile.checkUsername();

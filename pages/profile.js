@@ -13,7 +13,7 @@ class ProfilePage extends DefaultPage {
             avatar:               'img[class="profile-info__avatar"]',
 			settingsButton:       'a[class="profile-info__settings"]',
 			settingsPage:         'div[class="settings"]',
-			navbarActionsButton:  'button[class="navbar__action"]',
+			navbarActionsButton:  'button[class="navbar__action"][name="dropdown-toggle"]',
 			logoutButton:         'button[class="navbar__dropdown-action"][name="logout"]',
 			mainFeedPage:         'div[class="virtualizedlist-wrapper"]'  // only way to do this currently afaik
 		}
