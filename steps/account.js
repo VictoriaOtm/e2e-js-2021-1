@@ -1,27 +1,24 @@
 import DefaultSteps from './default';
-import page from '../pages/account';
+import account from '../pages/account';
+import {strict as assert} from "assert";
 
 class AccountSteps extends DefaultSteps {
 	constructor() {
-		super(page);
-	}
-
-	auth() {
-		this.open('https://account.mail.ru');
-		this.waitForAccount();
-		this.login();
+		super(account);
 	}
 
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
 	}
 
 	waitForAccount() {
 		this.page.waitForContainer();
+	}
+
+	checkOpened() {
+		assert.strictEqual(account.popUpExist(), `Вход`, 'Поп-ап не появился')
 	}
 }
 
