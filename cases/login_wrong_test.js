@@ -1,6 +1,5 @@
 import login from '../steps/login';
 
-// пример теста
 describe('test wrong login', () => {
 
   it('Проверить, что при некорректных данных подсвечиваются поля', () => {
@@ -8,6 +7,5 @@ describe('test wrong login', () => {
     login.loginWrongData();
 
     login.waitForWarnings()
-
   });
 });

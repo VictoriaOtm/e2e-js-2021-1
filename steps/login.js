@@ -22,6 +22,10 @@ class LoginSteps extends DefaultSteps {
     this.page.waitForWarnings();
   }
 
+  goToRegistrationPage() {
+    this.page.goToRegistrationPage()
+  }
+
 }
 
 export default new LoginSteps();
