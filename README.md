@@ -15,8 +15,10 @@
 
 В файле package.json замените урл в команде `"test": "wdio --baseUrl='https://e.mail.ru'"` на урл своего проекта.
 
+Скопировать ```credentials.template.json``` в ```credentials.json``` и указать логин и пароль для https://mail.liokor.ru
+
 Затем запускаем:
-`LOGIN=<your_test_email> PASSWORD=<your_password> npm test`
+`npm test`
 
 **ВАЖНО! Не храните логин и пароль в git, за это будет снят 1 балл**
 
