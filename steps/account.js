@@ -7,17 +7,24 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open('https://findfreelancer.ru/login');
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
-		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
+		this.page.fillEmailForm(process.env.EMAIL);
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+		return {
+			received: this.page.checkAuthorizedLogin(),
+			expected: process.env.LOGIN,
+		};
+	}
+
+	logout() {
+		this.page.clickOnExit();
+		return this.page.checkLogout();
 	}
 
 	waitForAccount() {
