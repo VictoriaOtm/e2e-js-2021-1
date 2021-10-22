@@ -4,10 +4,7 @@ import assert from "assert";
 
 // пример теста
 describe('move file test', () => {
-    // используйте beforeEach хук для вызова account.auth(),
-    // если вы тестируете НЕ авторизацию
     beforeEach(() => {
-        // account.auth() DOESNT WORK! element ("[data-test-id=login-app-read]") still not visible after 10000ms
         account.open('https://account.mail.ru');
         account.login();
     })
@@ -17,6 +14,6 @@ describe('move file test', () => {
         cloud.open('https://cloud.mail.ru/');
         cloud.moveFile();
         cloud.open(`https://cloud.mail.ru/home/${process.env.MOVE_FOLDER}`);
-        assert.strictEqual(cloud.checkFileMoved(), true);
+        assert.strictEqual(cloud.checkFileMoved(), true, `Cant move file ${process.env.MOVE_FILE} to folder ${process.env.MOVE_FOLDER}`);
     });
 });

@@ -2,7 +2,7 @@ import DefaultPage from '../default';
 
 class HomePage extends DefaultPage {
     constructor() {
-        super('account', '[data-test-id=login-app-read]')
+        super('account', '[class=page-wrapper]')
     }
 
     get createFolderLocators() {
@@ -51,8 +51,6 @@ class HomePage extends DefaultPage {
         this.page.waitForVisible(this.createFolderLocators.allFiles);
         return this.page.isExisting(this.createFolderLocators.createdFolder);
     }
-
-
 
     rightClickOnFolder() {
         this.page.rightClick(this.moveFileLocators.file);
