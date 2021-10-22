@@ -17,6 +17,7 @@ class SearchSteps extends DefaultSteps {
         for (let item of search_res) {
             if (item === process.env.LOGIN) {
                 findLogin = item;
+                break;
             }
         }
 
