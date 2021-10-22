@@ -10,7 +10,7 @@ class AccountSteps extends DefaultSteps {
         this.page.waitForContainer();
     }
 
-    login() {
+    loginAndReturnEmail() {
         this.page.fillEmailInput(process.env.EMAIL);
         this.page.fillPasswordInput(process.env.PASSWORD);
         this.page.submit();
