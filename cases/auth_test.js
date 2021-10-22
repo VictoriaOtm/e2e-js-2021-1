@@ -1,5 +1,5 @@
-import auth from '../../steps/auth';
-import main from '../../steps/main';
+import auth from '../steps/auth';
+import main from '../steps/main';
 
 import assert from 'assert'
 
