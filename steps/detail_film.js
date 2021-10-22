@@ -1,5 +1,5 @@
 import DefaultSteps from './default';
-import page from '../pages/detailFilm';
+import page from '../pages/detail_film';
 import { strict as assert } from 'assert';
 
 class DetailFilmSteps extends DefaultSteps {

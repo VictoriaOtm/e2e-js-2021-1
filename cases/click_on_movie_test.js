@@ -1,5 +1,5 @@
 import movies from '../steps/movies';
-import detailFilm from '../steps/detailFilm';
+import detailFilm from '../steps/detail_film';
 
 
 describe('test movies transfer on movie', () => {
