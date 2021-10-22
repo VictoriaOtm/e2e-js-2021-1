@@ -8,12 +8,12 @@ class MainPage extends DefaultPage {
     get locators() {
         return {
             dialoguesContainer: 'ul[id="dialogues-listing"]',
-            usernameBlock: 'span[id="profile-link-username"]'
+            authUserEmail: 'span[id="profile-link-username"]'
         }
     }
 
-    getUsername() {
-        return this.page.getHTML(this.locators.usernameBlock, false);
+    getAuthUserEmail() {
+        return this.page.getHTML(this.locators.authUserEmail, false);
     }
 }
 

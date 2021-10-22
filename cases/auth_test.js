@@ -22,20 +22,20 @@ describe('auth test', () => {
 		auth.emptyLogin();
 
 		const errLength = auth.getLoginError().length;
-		assert.notStrictEqual(errLength, 0, `${errLength} === 0`);
+		assert.notStrictEqual(errLength, 0, 'Login error text is missing');
 	});
 
 	it('Пустой пароль', () => {
 		auth.emptyPassword();
 
 		const errLength = auth.getPasswordError().length;
-		assert.notStrictEqual(errLength, 0, `${errLength} === 0`);
+		assert.notStrictEqual(errLength, 0, 'Password error text is missing');
 	});
 
 	it('Авторизация', () => {
 		let usernameEntered = auth.login().toLowerCase();
 
-		const usernameVisible = main.getUsername().toLowerCase().split('@')[0];
+		const usernameVisible = main.getAuthUserEmail().toLowerCase().split('@')[0];
 
 		assert.strictEqual(usernameEntered, usernameVisible, `${usernameEntered} != ${usernameVisible}`);
 	});

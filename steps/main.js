@@ -6,8 +6,8 @@ class MainSteps extends DefaultSteps {
         super(page);
     }
 
-    getUsername() {
-        return this.page.getUsername();
+    getAuthUserEmail() {
+        return this.page.getAuthUserEmail();
     }
 }
 
