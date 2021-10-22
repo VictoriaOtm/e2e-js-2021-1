@@ -37,6 +37,6 @@ describe('auth test', () => {
 
 		const usernameVisible = main.getAuthUserEmail().toLowerCase().split('@')[0];
 
-		assert.strictEqual(usernameEntered, usernameVisible, `${usernameEntered} != ${usernameVisible}`);
+		assert.strictEqual(usernameEntered, usernameVisible, `Expected ${usernameEntered}, received ${usernameVisible}`);
 	});
 });
