@@ -7,7 +7,7 @@ describe('Тестирование функций профиля', () => {
     });
 
     it('Создать новый плейлист на странице профиля', () => {
-        const name = 'awesome playlist'
+        const name = 'awesome playlist';
         profile.createPlaylist(name);
         profile.checkPlaylistAdded(name);
     });

@@ -11,8 +11,7 @@ class ProfilePage extends DefaultPage {
             createPlaylistInput: '#input-create-playlist',
             submitCreatePlaylist: '#submit-create-playlist',
             playlistsContainer: '#tabs',
-            playlistsItems: '.tab__title',
-            settingsLink: '#button-profile-settings a'
+            playlistsItems: '.tab__title'
         };
     }
 
