@@ -1,15 +1,9 @@
 import DefaultSteps from './default';
-import page from '../../e2e-js-2021-1/pages/login';
+import page from '../pages/login';
 
 class LoginSteps extends DefaultSteps {
   constructor() {
     super(page);
-  }
-
-  auth() {
-    this.open('https://qdaqda.ru/login');
-    this.waitForLogin();
-    this.login();
   }
 
   login() {
@@ -28,9 +22,6 @@ class LoginSteps extends DefaultSteps {
     this.page.waitForWarnings();
   }
 
-  waitForLogin() {
-    this.page.waitForContainer();
-  }
 }
 
 export default new LoginSteps();

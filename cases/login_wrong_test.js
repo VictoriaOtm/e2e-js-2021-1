@@ -1,4 +1,4 @@
-import login from '../../e2e-js-2021-1/steps/login';
+import login from '../steps/login';
 
 // пример теста
 describe('test wrong login', () => {

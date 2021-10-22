@@ -1,4 +1,4 @@
-import DefaultPage from '../../../../../e2e-js-2021-1/pages/default';
+import DefaultPage from '../default';
 
 class NavbarPage extends DefaultPage {
   constructor() {
@@ -10,7 +10,7 @@ class NavbarPage extends DefaultPage {
       userNav: '#jsProfileNav',
       userLogin: '.navbar-profile-name',
 
-  }
+    }
   }
 
   getUserLogin() {
