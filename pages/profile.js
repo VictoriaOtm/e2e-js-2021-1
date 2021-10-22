@@ -9,8 +9,8 @@ class ProfilePage extends DefaultPage {
 	get locators() {
 		return {
 			username:             'span[class="profile-info__username"]',
-            realName:             'span[class="profile-info__user-real-name"]',
-            avatar:               'img[class="profile-info__avatar"]',
+			realName:             'span[class="profile-info__user-real-name"]',
+			avatar:               'img[class="profile-info__avatar"]',
 			settingsButton:       'a[class="profile-info__settings"]',
 			settingsPage:         'div[class="settings"]',
 			navbarActionsButton:  'button[class="navbar__action"][name="dropdown-toggle"]',
