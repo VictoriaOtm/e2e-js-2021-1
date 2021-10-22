@@ -1,3 +1,4 @@
+import { strict as assert } from 'assert';
 import DefaultSteps from './default';
 import page from '../pages/profile';
 
@@ -14,7 +15,12 @@ class ProfileSteps extends DefaultSteps {
 	}
 
 	checkUsername() {
-		this.page.checkUsernameLoaded(process.env.LOGIN);
+		const actualUsername = this.page.getUsername();
+		assert.strictEqual(
+			process.env.LOGIN,
+			actualUsername,
+			`Username юзера ${actualUsername} не соответствует ожидаемому ${process.env.LOGIN}`,
+		)
 	}
 
 	checkSettingsButton() {

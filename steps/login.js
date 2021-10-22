@@ -1,9 +1,10 @@
 import DefaultSteps from './default';
-import page from '../pages/login';
+import loginPage from '../pages/login';
+import profilePage from '../pages/profile';
 
 class LoginSteps extends DefaultSteps {
 	constructor() {
-		super(page);
+		super(loginPage);
 	}
 
 	auth() {
@@ -16,7 +17,8 @@ class LoginSteps extends DefaultSteps {
 		this.page.fillLoginForm(process.env.LOGIN);
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkProfileLoaded(process.env.LOGIN);
+		profilePage.waitForContainer();
+		return profilePage.getUsername();
 	}
 
 	waitForLoginPage() {

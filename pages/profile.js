@@ -1,9 +1,8 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class ProfilePage extends DefaultPage {
 	constructor() {
-		super('account', '[class="profile-header-wrapper"]')
+		super('account', 'div[class="profile-header-wrapper"]')
 	}
 
 	get locators() {
@@ -26,14 +25,9 @@ class ProfilePage extends DefaultPage {
 		this.page.click(this.locators.logoutButton);
 	}
 
-	checkUsernameLoaded(username) {
+	getUsername() {
 		this.page.waitForVisible(this.locators.username);
-		const actualUsername = this.page.getText(this.locators.username);
-		assert.strictEqual(
-			username,
-			actualUsername,
-			`Username юзера ${actualUsername} не соответствует ожидаемому ${username}`,
-		)
+		return this.page.getText(this.locators.username);
 	}
 
 	goToSettings() {

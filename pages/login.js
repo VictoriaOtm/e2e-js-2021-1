@@ -1,9 +1,8 @@
 import DefaultPage from './default';
-import { strict as assert } from 'assert';
 
 class LoginPage extends DefaultPage {
 	constructor() {
-		super('account', '[class="auth-page login-page"]')
+		super('account', 'div[class="auth-page login-page"]')
 	}
 
 	get locators() {
@@ -32,14 +31,9 @@ class LoginPage extends DefaultPage {
 		this.page.click(this.locators.submitButton)
 	}
 
-	checkProfileLoaded(username) {
+	getUsername() {
 		this.page.waitForVisible(this.locators.username);
-		const actualUsername = this.page.getText(this.locators.username);
-		assert.strictEqual(
-			username,
-			actualUsername,
-			`Username авторизованного юзера ${actualUsername} не соответствует ожидаемому ${username}`,
-		)
+		return this.page.getText(this.locators.username);
 	}
 }
 

@@ -1,5 +1,5 @@
 import login from '../steps/login';
-import profile from '../steps/profile'
+import profile from '../steps/profile';
 
 describe('profile testing', () => {
 	beforeEach(() => {
@@ -7,7 +7,7 @@ describe('profile testing', () => {
 	})
 
 	afterEach(() => {
-		profile.logout();
+		browser.deleteCookie();
 	})
 
 	it('check if login shows in profile', () => {
