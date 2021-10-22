@@ -1,4 +1,4 @@
-import accountRedioteka from '../steps/accountRedioteka';
+import accountRedioteka from '../steps/account';
 import profile from '../steps/profile';
 import main from "../steps/main";
 
