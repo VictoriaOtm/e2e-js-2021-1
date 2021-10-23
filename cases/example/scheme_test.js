@@ -1,0 +1,11 @@
+import account from '../../steps/account';
+import header from '../../steps/header';
+
+describe('Смена темы', () => {
+	it('Сменить тему', () => {
+		account.auth();
+
+		header.waitForHeader();
+		header.switchScheme();
+	});
+});
