@@ -15,17 +15,15 @@ class LoginPage extends DefaultPage {
     }
 
     fillLoginInput(username) {
-        const loginLocator = this.locators.login;
-        this.page.waitForVisible(loginLocator);
-        this.page.click(loginLocator);
-        this.page.setValue(loginLocator, username);
+        this.page.waitForVisible(this.locators.login);
+        this.page.click(this.locators.login);
+        this.page.setValue(this.locators.login, username);
     }
 
     fillPasswordInput(password) {
-        const passwordLocator = this.locators.password;
-        this.page.waitForVisible(passwordLocator);
-        this.page.click(passwordLocator);
-        this.page.setValue(passwordLocator, password);
+        this.page.waitForVisible(this.locators.password);
+        this.page.click(this.locators.password);
+        this.page.setValue(this.locators.password, password);
     }
 
     submit() {
