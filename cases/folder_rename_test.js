@@ -12,6 +12,6 @@ describe('Folders #1', () => {
 		dialogues.expandFolders();
 		dialogues.createFolder("My lovely folder");
 		// dialogues.renameFolder("My lovely folder", "Worst folder in the world"); // Ну не получилось, не фартануло
-		// dialogues.deleteFolder("Worst folder in the world"); // Причина, почему не получилась, в определении этих функций в pages/dialogues.js
+		// dialogues.deleteFolder("Worst folder in the world"); // Причина, почему не получилось, в определении этих функций в pages/dialogues.js
 	});
 });

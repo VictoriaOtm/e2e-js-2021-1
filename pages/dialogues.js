@@ -4,7 +4,6 @@ import { strict as assert } from 'assert';
 class DialoguesPage extends DefaultPage {
 	constructor() {
 		super('Dialogues', '#messages-page');
-		console.log(this.page)
 	}
 
 	get locators () {

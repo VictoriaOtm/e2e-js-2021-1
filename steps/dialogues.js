@@ -26,7 +26,7 @@ class DialoguesSteps extends DefaultSteps {
 		this.page.fillOverlay(name)
 		this.page.submitOverlay()
 		const end = this.page.getFoldersHeight()
-		assert.equal(start < end, true, // выглядит так себе, но я чет не нашёл проверки вроде compare
+		assert.strictEqual(start < end, true, // выглядит так себе, но я чет не нашёл проверки вроде compare
 			`Начальная высота списка папок не меньше конечного: ${start} !< ${end}`,
 		)
 	}
