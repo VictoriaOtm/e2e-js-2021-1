@@ -15,8 +15,13 @@
 
 В файле package.json замените урл в команде `"test": "wdio --baseUrl='https://e.mail.ru'"` на урл своего проекта.
 
+### Linux
 Затем запускаем:
 `LOGIN=<your_test_email> PASSWORD=<your_password> npm test`
+
+### Windows
+Затем заменяем ***** в test_example.bat на свои логин и пароль, сохраняем файл, как test.bat.
+Выполняем файл: `./test.bat`
 
 **ВАЖНО! Не храните логин и пароль в git, за это будет снят 1 балл**
 

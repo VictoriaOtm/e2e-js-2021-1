@@ -1,5 +1,8 @@
 import DefaultSteps from './default';
 import page from '../pages/account';
+import dialoguesPage from '../pages/dialogues';
+
+const AUTH_URL = 'https://mail.liokor.ru/auth';
 
 class AccountSteps extends DefaultSteps {
 	constructor() {
@@ -7,17 +10,17 @@ class AccountSteps extends DefaultSteps {
 	}
 
 	auth() {
-		this.open('https://account.mail.ru');
+		this.open(AUTH_URL);
 		this.waitForAccount();
 		this.login();
 	}
 
 	login() {
 		this.page.fillLoginForm(process.env.LOGIN);
-		this.page.next();
 		this.page.fillPasswordForm(process.env.PASSWORD);
 		this.page.submit();
-		this.page.checkAuthorizedEmail(process.env.LOGIN);
+
+		dialoguesPage.waitForContainer()
 	}
 
 	waitForAccount() {
