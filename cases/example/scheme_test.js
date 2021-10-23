@@ -3,8 +3,7 @@ import header from '../../steps/header';
 
 describe('Смена темы', () => {
 	it('Сменить тему', () => {
-		account.open('/');
-		account.login();
+		account.auth();
 
 		header.waitForHeader();
 		header.switchScheme();

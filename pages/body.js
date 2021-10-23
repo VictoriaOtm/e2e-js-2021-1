@@ -13,8 +13,7 @@ class BodyPage extends DefaultPage {
 	}
 
 	getScheme() {
-		const attribute = this.page.getAttribute(this.locators.body, 'scheme');
-		return attribute;
+		return this.page.getAttribute(this.locators.body, 'scheme');
 	}
 }
 

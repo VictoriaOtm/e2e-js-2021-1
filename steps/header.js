@@ -13,7 +13,7 @@ class HeaderSteps extends DefaultSteps {
 	}
 
 	switchScheme () {
-		let scheme = body.getScheme();
+		const scheme = body.getScheme();
 		this.page.clickSwitch();
 		assert.notEqual(scheme, body.getScheme())
 	}

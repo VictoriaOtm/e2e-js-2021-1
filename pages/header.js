@@ -20,8 +20,7 @@ class HeaderPage extends DefaultPage {
 	}
 
 	hidden() {
-		const attribute = this.page.getAttribute(this.locators.header, 'hidden');
-		return !!attribute;
+		return !!this.page.getAttribute(this.locators.header, 'hidden');
 	}
 }
 
