@@ -4,7 +4,7 @@
   "description": "e2e tests for octavius",
   "main": "index.js",
   "scripts": {
-    "test": "wdio --baseUrl='https://e.mail.ru'",
+    "test": "wdio --baseUrl='https://cinemedia.ru'",
     "report": "mkdir -p ./cache/allure-report && allure generate -c -o ./cache/allure-report ./cache/allure-results && allure open ./cache/allure-report"
   },
   "author": "",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "chromedriver": "2.43.1",
+    "dotenv": "^10.0.0",
     "selenium-standalone": "6.15.3"
   }
 }
