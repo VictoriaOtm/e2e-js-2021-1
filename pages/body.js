@@ -7,7 +7,6 @@ class BodyPage extends DefaultPage {
 
 	get locators() {
 		return {
-			container: this.container,
 			body: 'body'
 		};
 	}

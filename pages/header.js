@@ -7,7 +7,6 @@ class HeaderPage extends DefaultPage {
 
 	get locators () {
 		return {
-			container: this.container,
 			switchBtn: '.switch-btn',
 			settingsBtn: '#home-icon__Settings',
 			header: '#header',
