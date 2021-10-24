@@ -8,16 +8,16 @@ describe('Folders #1', () => {
 		account.auth();
 	})
 
-	it('Успешное создание папки' /* и редактирование имени папки*/, () => {
+	it('Успешное создание папки и редактирование имени папки', () => {
 		const prevName = "My lovely folder";
 		const newName = "Worst folder in the world";
 		dialogues.waitForList();
 		dialogues.expandFolders();
 		dialogues.createFolder(prevName);
-		/* const folderName = dialogues.renameFolder(prevName, newName);
+		const folderName = dialogues.renameFolder(newName);
 		assert.strictEqual(newName, folderName,
-			`Название созданной папки ${value} не соответствует ожидаемому ${name}`,
+			`Название созданной папки ${folderName} не соответствует ожидаемому ${newName}`,
 		)
-		dialogues.deleteFolder(newName); */
+		dialogues.deleteFolder();
 	});
 });

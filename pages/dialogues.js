@@ -15,8 +15,9 @@ class DialoguesPage extends DefaultPage {
 			messages: '#messages-listing',
 			messageBlocks: '.message-block',
 			createFolderButton: '.new-folder-button',
-			folderInput: 'input.folder[value="$1"]',
-			renameFolderButtons: '#rename-folder',
+			folderInput: 'input.folder',
+			folderRenameButton: '#dialogues-listing .folder:nth-child(2) #rename-folder',
+			folderDeleteButton: '#dialogues-listing .folder:nth-child(2) #delete-folder',
 			expandFoldersButton: '.folders-button',
 			overlayInput: '.modal input',
 			overlaySubmit: '.modal .submit',
@@ -58,25 +59,20 @@ class DialoguesPage extends DefaultPage {
 		this.page.click(this.locators.overlaySubmit);
 	}
 
-	renameFolder (prevName, newName) {
-		const selector = this.locators.folderInput.replace('$1', prevName);
-		this.page.waitForVisible(selector); // not working
-		const input = this.page.elements(selector); // this object has no .parenElement
-		// I CAN'T GET PARENT ELEMENT. I DON'T KNOW HOW TO DO IT
-		const renameButton = input.parentElement.parentElement.parentElement.querySelector("#rename-folder")
+	renameFolder (newName) {
+		this.page.moveToObject(this.locators.folderRenameButton);
+		this.page.waitForVisible(this.locators.folderRenameButton);
+		this.page.click(this.locators.folderRenameButton);
 
-		this.page.click(renameButton);
-		input.clear();
-		this.page.setValue(input, newName);
-		return this.page.getAttribute(input, 'value');
+		this.page.waitUntil(() => {return !this.page.getAttribute(this.locators.folderInput, 'readonly');});
+		this.page.setValue(this.locators.folderInput, newName);
+		return this.page.getAttribute(this.locators.folderInput, 'value');
 	}
 
-	deleteFolder (name) {
-		const input = this.page.element(this.locators.folderInput.replace('$1', name))
-		const deleteButton = input.parentElement.parentElement.parentElement.querySelector("#delete-folder")
-
-		this.page.waitForVisible(deleteButton);
-		this.page.click(deleteButton);
+	deleteFolder () {
+		this.page.moveToObject(this.locators.folderDeleteButton);
+		this.page.waitForVisible(this.locators.folderDeleteButton);
+		this.page.click(this.locators.folderDeleteButton);
 	}
 
 	checkDialogueOpened () {

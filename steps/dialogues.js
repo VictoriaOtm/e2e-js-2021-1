@@ -31,12 +31,12 @@ class DialoguesSteps extends DefaultSteps {
 		)
 	}
 
-	renameFolder (prevName, newName) {
-		return this.page.renameFolder(prevName, newName);
+	renameFolder (newName) {
+		return this.page.renameFolder(newName);
 	}
 
-	deleteFolder (name) {
-		this.page.deleteFolder(name);
+	deleteFolder () {
+		this.page.deleteFolder();
 		this.page.submitOverlay();
 	}
 
