@@ -32,11 +32,12 @@ class DialoguesSteps extends DefaultSteps {
 	}
 
 	renameFolder (prevName, newName) {
-		this.page.renameFolder(prevName, newName)
+		return this.page.renameFolder(prevName, newName);
 	}
 
 	deleteFolder (name) {
-		this.page.deleteFolder(name)
+		this.page.deleteFolder(name);
+		this.page.submitOverlay();
 	}
 
 	sendMessage(text) {

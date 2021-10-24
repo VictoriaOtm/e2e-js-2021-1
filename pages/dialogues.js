@@ -15,7 +15,7 @@ class DialoguesPage extends DefaultPage {
 			messages: '#messages-listing',
 			messageBlocks: '.message-block',
 			createFolderButton: '.new-folder-button',
-			folderCurrent: 'input.folder[value="$1"]',
+			folderInput: 'input.folder[value="$1"]',
 			renameFolderButtons: '#rename-folder',
 			expandFoldersButton: '.folders-button',
 			overlayInput: '.modal input',
@@ -58,42 +58,26 @@ class DialoguesPage extends DefaultPage {
 		this.page.click(this.locators.overlaySubmit);
 	}
 
-	/*
-	Эти две функции я не знаю, как написать. И вот, почему:
-	Вот схема иерархии тегов:
-	<Большая кнопка папки>      # пускай селектор сюда будет ".folder"
-		<Картинка>
-		<Див с названием папки>  # тогда селектор сюда будет: ".folder > div=name"
-		<Кнопки управления папкой>
-			<Удалить>
-			<Переименовать>
-		</>
-	</>
+	renameFolder (prevName, newName) {
+		const selector = this.locators.folderInput.replace('$1', prevName);
+		this.page.waitForVisible(selector); // not working
+		const input = this.page.elements(selector); // this object has no .parenElement
+		// I CAN'T GET PARENT ELEMENT. I DON'T KNOW HOW TO DO IT
+		const renameButton = input.parentElement.parentElement.parentElement.querySelector("#rename-folder")
 
-	И вот чтобы выбрать одну из кнопок "удалить" или "переименовать", нужно как-то написать селектор на них.
-	Но я не могу составить селектор, проверяющий, что "сосед родителя имеет текст $text"
-
-	Выбрать элемент с названием папки я могу. Селектор на него есть.
-	Нужен какой-то способ дойти от дива с названием до кнопок. Я его не нашёл. Памагити :(
+		this.page.click(renameButton);
+		input.clear();
+		this.page.setValue(input, newName);
+		return this.page.getAttribute(input, 'value');
+	}
 
 	deleteFolder (name) {
-		const selector = this.locators.folderCurrent.replace('$1', prevName);
-		this.page.waitForVisible(selector);
-		this.page.click(selector);
-	}
+		const input = this.page.element(this.locators.folderInput.replace('$1', name))
+		const deleteButton = input.parentElement.parentElement.parentElement.querySelector("#delete-folder")
 
-	renameFolder (prevName, newName) {
-		console.log("wait")
-		this.page.waitForVisible(this.locators.folderCurrent.replace('$1', prevName));
-		console.log("waited")
-
-		const inputSelector = this.locators.folderCurrent.replace('$1', name);
-		const value = this.page.getAttribute(inputSelector, 'value');
-		assert.strictEqual(name, value,
-			`Название созданной папки ${value} не соответствует ожидаемому ${name}`,
-		)
+		this.page.waitForVisible(deleteButton);
+		this.page.click(deleteButton);
 	}
-	*/
 
 	checkDialogueOpened () {
 		this.page.waitForVisible(this.locators.messageBlocks);

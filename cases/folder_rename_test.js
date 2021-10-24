@@ -1,5 +1,6 @@
 import account from '../steps/account';
 import dialogues from '../steps/dialogues';
+import {strict as assert} from "assert";
 
 
 describe('Folders #1', () => {
@@ -7,11 +8,16 @@ describe('Folders #1', () => {
 		account.auth();
 	})
 
-	it('Успешное создание папки' /* и редактирование имени папки */, () => {
+	it('Успешное создание папки' /* и редактирование имени папки*/, () => {
+		const prevName = "My lovely folder";
+		const newName = "Worst folder in the world";
 		dialogues.waitForList();
 		dialogues.expandFolders();
-		dialogues.createFolder("My lovely folder");
-		// dialogues.renameFolder("My lovely folder", "Worst folder in the world"); // Ну не получилось, не фартануло
-		// dialogues.deleteFolder("Worst folder in the world"); // Причина, почему не получилось, в определении этих функций в pages/dialogues.js
+		dialogues.createFolder(prevName);
+		/* const folderName = dialogues.renameFolder(prevName, newName);
+		assert.strictEqual(newName, folderName,
+			`Название созданной папки ${value} не соответствует ожидаемому ${name}`,
+		)
+		dialogues.deleteFolder(newName); */
 	});
 });
